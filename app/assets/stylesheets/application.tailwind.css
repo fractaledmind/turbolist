@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .marker-none::marker { content: ""; }
+  .marker-none::-webkit-details-marker { display: none; }
+}
