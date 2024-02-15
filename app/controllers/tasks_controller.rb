@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1
   def show
+    @tasks = Task.all.order(created_at: :desc)
   end
 
   # GET /tasks/new
