@@ -19,7 +19,7 @@
   </head>
 
   <body class="h-full">
-    <div class="h-full grid grid-cols-[16rem_6fr_4fr] auto-rows-fr">
+    <div class="h-full grid <%= content_for?(:grid_cols) ? content_for(:grid_cols) : "grid-cols-[16rem_6fr_4fr]" %> auto-rows-fr">
       <div data-turbo-permanent class="w-64 flex flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="group/sidebar h-full flex grow flex-col border-r border-gray-200 bg-white dark:bg-slate-900 dark:border-slate-800">
