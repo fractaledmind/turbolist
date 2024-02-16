@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.2",
+    "@tailwindcss/container-queries": "^0.1.1",
     "autoprefixer": "^10.4.17",
     "esbuild": "^0.20.0",
     "postcss": "^8.4.35",
