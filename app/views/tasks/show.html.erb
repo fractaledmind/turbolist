@@ -5,9 +5,7 @@
     <details class="relative z-0">
       <summary class="marker-none cursor-pointer">
         <div class="size-8 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
-          <svg class="bi bi--sort-down" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-            <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z" />
-          </svg>
+          <%= icon "sort-down", classes: "size-4" %>
         </div>
       </summary>
       <ul class="absolute z-50 w-48 py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden">
@@ -79,14 +77,10 @@
         Manage all new and incoming tasks —&nbsp;create, move, schedule, and more
       </span>
       <button type="button" class="size-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
-        <svg class="bi bi--arrow-up-right" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />
-        </svg>
+        <%= icon "arrow-up-right", classes: "size-4" %>
       </button>
       <button type="button" class="size-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
-        <svg class="bi bi--x-lg" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-        </svg>
+        <%= icon "x-lg", classes: "size-4" %>
       </button>
     </p>
   </div>
@@ -102,24 +96,18 @@
         </li>
       <% end %>
       <li class="group flex gap-x-2 items-center flex-wrap">
-        <svg class="bi bi--app size-6 text-slate-400 dark:text-slate-600" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-          <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z" />
-        </svg>
+        <%= icon "app", classes: "size-6 text-slate-400 dark:text-slate-600" %>
         <input class="peer bg-transparent w-10/12 placeholder:text-slate-600 focus:outline-none" placeholder="New task" value="Make your first list" />
         <details class="ml-auto relative">
           <summary class="marker-none cursor-pointer">
             <div class="size-5 text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full">
-              <svg class="bi bi--person size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-              </svg>
+              <%= icon "person", classes: "size-2.5 text-slate-400" %>
             </div>
           </summary>
           <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
             <div class="py-1" role="none">
               <div class="group flex items-center gap-2 px-4 py-1 text-slate-800 dark:text-white whitespace-nowrap">
-                <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
+                <%= icon "search", classes: "size-3 text-inherit" %>
                 <input class="bg-transparent focus:outline-none" placeholder="Search for name">
               </div>
             </div>
@@ -130,9 +118,7 @@
                   <span class="text-xs leading-none text-white">J</span>
                 </span>
                 John Doe
-                <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                </svg>
+                <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
               </label>
               <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
                 <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
@@ -140,9 +126,7 @@
                   <span class="text-xs leading-none text-white">S</span>
                 </span>
                 Sally Doe
-                <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                </svg>
+                <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
               </label>
             </div>
             <div class="p-2" role="none">
@@ -157,34 +141,22 @@
           <details class="relative">
             <summary class="marker-none cursor-pointer">
               <div class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
-                <svg class="bi bi--calendar3 size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                </svg>
+                <%= icon "calendar3", classes: "size-2.5 text-slate-400" %>
                 Tomorrow, 9am
               </div>
             </summary>
             <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Today
                 </a>
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Tomorrow
                 </a>
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Next week
                 </a>
               </div>
@@ -193,15 +165,11 @@
                   <h2 class="flex-auto text-sm font-semibold text-gray-900 dark:text-white">January 2022</h2>
                   <button type="button" class="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Previous month</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
-                    </svg>
+                    <%= icon "chevron-left", classes: "size-5" %>
                   </button>
                   <button type="button" class="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Next month</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-                    </svg>
+                    <%= icon "chevron-right", classes: "size-5" %>
                   </button>
                 </div>
                 <div class="py-2 px-1 grid grid-cols-7 text-center text-sm leading-6 text-gray-500 dark:text-white">
@@ -355,26 +323,19 @@
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--clock size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
-                  </svg>
+                  <%= icon "clock", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Time
                 </a>
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--bell size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-                  </svg>
+                  <%= icon "bell", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Remind me
                 </a>
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--repeat size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
-                  </svg>
+                  <%= icon "repeat", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Repeat
                 </a>
               </div>
@@ -383,43 +344,28 @@
           <details class="relative">
             <summary class="marker-none cursor-pointer">
               <div class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
-                <svg class="bi bi--tag size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                  <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                </svg>
+                <%= icon "tag", classes: "size-2.5 text-slate-400" %>
               </div>
             </summary>
             <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
               <div class="py-1" role="none">
                 <div class="group flex items-center gap-2 px-4 py-1 text-slate-800 dark:text-white whitespace-nowrap">
-                  <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                  </svg>
+                  <%= icon "search", classes: "size-3 text-inherit" %>
                   <input class="bg-transparent focus:outline-none" placeholder="Search or create label">
                 </div>
               </div>
               <div class="py-1" role="none">
                 <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
                   <input type="checkbox" class="peer appearance-none w-0 hidden">
-                  <svg class="bi bi--tag size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                  </svg>
+                  <%= icon "tag", classes: "size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" %>
                   Tutorial
-                  <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                  </svg>
+                  <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
                 </label>
                 <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
                   <input type="checkbox" class="peer appearance-none w-0 hidden">
-                  <svg class="bi bi--tag size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                  </svg>
+                  <%= icon "tag", classes: "size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" %>
                   reminder
-                  <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                  </svg>
+                  <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
                 </label>
               </div>
               <div class="p-2" role="none">
@@ -430,32 +376,24 @@
             </div>
           </details>
           <a href="#" class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
-            <svg class="bi bi--list size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-            </svg>
+            <%= icon "list", classes: "size-2.5 text-slate-400" %>
             Getting started
           </a>
         </div>
       </li>
       <li class="group flex gap-x-2 items-center flex-wrap">
-        <svg class="bi bi--app size-6 text-slate-400 dark:text-slate-600" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-          <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z" />
-        </svg>
+        <%= icon "app", classes: "size-6 text-slate-400 dark:text-slate-600" %>
         <input class="peer bg-transparent w-10/12 placeholder:text-slate-600 focus:outline-none" placeholder="New task" value="Connect your first integration">
         <details class="ml-auto relative">
           <summary class="marker-none cursor-pointer">
             <div class="size-5 text-slate-400 hover:bg-slate-800 hover:text-white inline-flex items-center justify-center rounded-full">
-              <svg class="bi bi--person size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-              </svg>
+              <%= icon "person", classes: "size-2.5 text-slate-400" %>
             </div>
           </summary>
           <div class="absolute max-w-md w-max py-1 bg-white dark:bg-slate-950 dark:text-white rounded-xl overflow-hidden divide-y divide-slate-800">
             <div class="py-1" role="none">
               <div class="group flex items-center gap-2 px-4 py-1 text-white whitespace-nowrap">
-                <svg class="bi bi--search size-3 text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
+                <%= icon "search", classes: "size-3 text-inherit" %>
                 <input class="bg-transparent focus:outline-none" placeholder="Search for name">
               </div>
             </div>
@@ -466,9 +404,7 @@
                   <span class="text-xs leading-none text-white">J</span>
                 </span>
                 John Doe
-                <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                </svg>
+                <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
               </label>
               <label class="group flex items-center gap-2 px-4 py-1 text-white hover:bg-slate-900 whitespace-nowrap">
                 <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
@@ -476,9 +412,7 @@
                   <span class="text-xs leading-none text-white">S</span>
                 </span>
                 Sally Doe
-                <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                </svg>
+                <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
               </label>
             </div>
             <div class="p-2" role="none">
@@ -493,33 +427,21 @@
           <details class="relative">
             <summary class="marker-none cursor-pointer">
               <div class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
-                <svg class="bi bi--calendar3 size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                </svg>
+                <%= icon "calendar3", classes: "size-2.5 text-slate-400" %>
               </div>
             </summary>
             <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Today
                 </a>
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Tomorrow
                 </a>
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--calendar3 size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                  </svg>
+                  <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Next week
                 </a>
               </div>
@@ -528,15 +450,11 @@
                   <h2 class="flex-auto text-sm font-semibold text-gray-900 dark:text-white">January 2022</h2>
                   <button type="button" class="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Previous month</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"></path>
-                    </svg>
+                    <%= icon "chevron-left", classes: "size-5" %>
                   </button>
                   <button type="button" class="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Next month</span>
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
-                    </svg>
+                    <%= icon "chevron-right", classes: "size-5" %>
                   </button>
                 </div>
                 <div class="py-2 px-1 grid grid-cols-7 text-center text-sm leading-6 text-gray-500 dark:text-white">
@@ -690,26 +608,19 @@
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--clock size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
-                  </svg>
+                  <%= icon "clock", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Time
                 </a>
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--bell size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-                  </svg>
+                  <%= icon "bell", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Remind me
                 </a>
               </div>
               <div class="py-1" role="none">
                 <a href="#" class="group/link flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-                  <svg class="bi bi--repeat size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
-                  </svg>
+                  <%= icon "repeat", classes: "size-3 text-slate-500 group-hover/link:text-slate-700 dark:text-slate-400 dark:group-hover/link:text-white" %>
                   Repeat
                 </a>
               </div>
@@ -718,43 +629,28 @@
           <details class="relative">
             <summary class="marker-none cursor-pointer">
               <div class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
-                <svg class="bi bi--tag size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                  <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                </svg>
+                <%= icon "tag", classes: "size-2.5 text-slate-400" %>
               </div>
             </summary>
             <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
               <div class="py-1" role="none">
                 <div class="group flex items-center gap-2 px-4 py-1 text-slate-800 dark:text-white whitespace-nowrap">
-                  <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                  </svg>
+                  <%= icon "search", classes: "size-3 text-inherit" %>
                   <input class="bg-transparent focus:outline-none" placeholder="Search or create label">
                 </div>
               </div>
               <div class="py-1" role="none">
                 <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
                   <input type="checkbox" class="peer appearance-none w-0 hidden">
-                  <svg class="bi bi--tag size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                  </svg>
+                  <%= icon "tag", classes: "size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" %>
                   Tutorial
-                  <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                  </svg>
+                  <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
                 </label>
                 <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
                   <input type="checkbox" class="peer appearance-none w-0 hidden">
-                  <svg class="bi bi--tag size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-                    <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-                  </svg>
+                  <%= icon "tag", classes: "size-3 text-slate-500 dark:text-slate-400 group-hover/label:text-slate-600 dark:group-hover/label:text-white peer-checked:text-orange-500" %>
                   reminder
-                  <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                  </svg>
+                  <%= icon "check2", classes: "size-4 ml-auto text-orange-500 invisible peer-checked:visible" %>
                 </label>
               </div>
               <div class="p-2" role="none">
