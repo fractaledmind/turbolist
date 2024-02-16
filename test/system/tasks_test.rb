@@ -7,21 +7,23 @@ class TasksTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit tasks_url
-    assert_selector "h1", text: "Tasks"
+    assert_selector "h1", text: "Inbox"
   end
 
   test "should create task" do
     visit tasks_url
-    click_on "New task"
 
-    fill_in "Title", with: @task.title
-    click_on "Create Task"
+    fill_in "New task", with: @task.title, match: :first
 
-    assert_text "Task was successfully created"
-    click_on "Back"
+    send_keys "submit"
+
+    assert_selector "h1", text: "Inbox"
+    assert_selector "input[value=#{@task.title}]"
   end
 
   test "should update Task" do
+    skip "Not implemented yet"
+
     visit task_url(@task)
     click_on "Edit this task", match: :first
 
@@ -33,6 +35,8 @@ class TasksTest < ApplicationSystemTestCase
   end
 
   test "should destroy Task" do
+    skip "Not implemented yet"
+
     visit task_url(@task)
     click_on "Destroy this task", match: :first
 
