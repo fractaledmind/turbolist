@@ -384,7 +384,13 @@
   </header>
 
   <section class="my-4 flex flex-grow flex-col justify-end">
-    <p class="text-center text-sm text-slate-200 dark:text-gray-500">Created by Stephen &middot; <time datetime="2024-02-15T18:21:24Z">21h ago</time></p>
+    <p class="text-center text-sm text-slate-200 dark:text-gray-500">
+      Created by Stephen &middot;
+
+      <abbr title="<%= task.created_at.to_formatted_s %>" class="cursor-help">
+        <%= time_tag task.created_at, "#{time_ago_in_words(task.created_at, scope: 'datetime.distance_in_words.short')} ago" %>
+      </abbr>
+    </p>
   </section>
 
   <form class="px-6 py-2">
