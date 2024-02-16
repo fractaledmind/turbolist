@@ -60,9 +60,8 @@
       </details>
     </div>
 
-    <form class="group flex flex-wrap items-center gap-x-2" data-controller="form" data-action="turbo:submit-end->form#clear" action="/tasks/2" accept-charset="UTF-8" method="post">
-      <input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="V5-XZYVp598xYmg5m2EQH8PV5XGJfpetPp1E5uX7BTf5nrxaGvLoA0UMqRgBKagzHsb0P9Nw-tjvZY9OxSaLaQ" autocomplete="off" />
-      <input class="peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none" placeholder="New task" autocomplete="false" value="a new one" type="text" name="task[title]" id="task_title" />
+    <%= form_with(model: task, class: "group flex flex-wrap items-center gap-x-2") do |form| %>
+      <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title || "" %>
 
       <details class="relative ml-auto">
         <summary class="marker-none cursor-pointer">
@@ -379,7 +378,9 @@
           </div>
         </details>
       </div>
-    </form>
+
+      <%= form.submit class: "hidden" %>
+    <% end %>
   </header>
 
   <section class="my-4 flex flex-grow flex-col justify-end">
