@@ -5,6 +5,16 @@
         <%= icon "x-lg", classes: "size-4" %>
       <% end %>
 
+      <%= button_to task, action: "update", form_class: "", params: { task: {completed: "toggle"} }, class: "inline-flex h-8 items-center justify-center rounded-full bg-slate-200 px-3 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white" do %>
+        <% if task.completed? %>
+          <%= icon "check-circle-fill", classes: "mr-2 size-4" %>
+          Completed
+        <% else %>
+          <%= icon "check-circle", classes: "mr-2 size-4" %>
+          Complete
+        <% end %>
+      <% end %>
+
       <details class="relative z-0 ml-auto">
         <summary class="marker-none cursor-pointer">
           <div class="inline-flex size-8 items-center justify-center rounded-full bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white">
