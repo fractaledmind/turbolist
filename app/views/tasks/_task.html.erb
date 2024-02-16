@@ -62,7 +62,11 @@
     </div>
 
     <%= form_with(model: task, class: "group flex flex-wrap items-center gap-x-2") do |form| %>
-      <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title || "" %>
+      <% if task.completed? %>
+        <h1 class="w-11/12 text-3xl dark:text-slate-400 line-through decoration-orange-500" id="<%= dom_id(task, :title) %>"><%= task.title %></h1>
+      <% else %>
+        <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title, id: dom_id(task, :title) %>
+      <% end %>
 
       <details class="relative ml-auto">
         <summary class="marker-none cursor-pointer">
