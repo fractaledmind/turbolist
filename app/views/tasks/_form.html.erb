@@ -1,54 +1,56 @@
 <%= form_with(model: task, data: { controller: :form, action: "turbo:submit-end->form#clear" }) do |form| %>
-  <%= form.label :title, class: "peer dark:hover:bg-slate-800 py-1 pr-6 pl-[6.5rem] group/input flex gap-x-2 items-center flex-wrap" do %>
-    <%= icon "app-indicator", classes: "size-6 text-slate-400 dark:text-slate-600" %>
-    <%= form.text_field :title, class: "peer bg-transparent focus:w-10/12 w-[7ch] placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title || "" %>
-    <span class="peer-focus:invisible inline-flex items-center justify-center size-5 rounded-full bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-600 dark:group-hover/input:bg-slate-700 dark:group-hover/input:text-slate-500">C</span>
-    <details class="ml-auto invisible group-hover/input:visible peer-focus:visible open:visible relative">
-      <summary class="marker-none cursor-pointer">
-        <div class="size-5 text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
-          <%= icon "person", classes: "size-2.5 text-slate-400" %>
-        </div>
-      </summary>
-      <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
-        <div class="py-1" role="none">
-          <div class="group flex items-center gap-2 px-4 py-1 text-slate-800 dark:text-white whitespace-nowrap">
-            <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-            </svg>
-            <input class="bg-transparent focus:outline-none" placeholder="Search for name">
+  <%= form.label :title, class: "peer block hover:bg-slate-200 dark:hover:bg-slate-800 py-1 group/input" do %>
+    <div class="max-w-3xl px-12 mx-auto w-full flex gap-x-2 items-center">
+      <%= icon "app-indicator", classes: "size-6 text-slate-400 dark:text-slate-600" %>
+      <%= form.text_field :title, class: "peer bg-transparent focus:w-10/12 w-[7ch] placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title || "" %>
+      <span class="peer-focus:invisible inline-flex items-center justify-center size-5 rounded-full bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-600 dark:group-hover/input:bg-slate-700 dark:group-hover/input:text-slate-500">C</span>
+      <details class="ml-auto invisible group-hover/input:visible peer-focus:visible open:visible relative">
+        <summary class="marker-none cursor-pointer">
+          <div class="size-5 text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+            <%= icon "person", classes: "size-2.5 text-slate-400" %>
+          </div>
+        </summary>
+        <div class="absolute z-50 max-w-md w-max py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800">
+          <div class="py-1" role="none">
+            <div class="group flex items-center gap-2 px-4 py-1 text-slate-800 dark:text-white whitespace-nowrap">
+              <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+              <input class="bg-transparent focus:outline-none" placeholder="Search for name">
+            </div>
+          </div>
+          <div class="py-1" role="none">
+            <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+              <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
+              <span class="inline-flex size-4 items-center justify-center rounded-full bg-blue-500">
+                <span class="text-xs leading-none text-white">J</span>
+              </span>
+              John Doe
+              <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+              </svg>
+            </label>
+            <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+              <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
+              <span class="inline-flex size-4 items-center justify-center rounded-full bg-green-500">
+                <span class="text-xs leading-none text-white">S</span>
+              </span>
+              Sally Doe
+              <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+              </svg>
+            </label>
+          </div>
+          <div class="p-2" role="none">
+            <button type="button" class="rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800 h-8 w-full">
+              Clear
+            </button>
           </div>
         </div>
-        <div class="py-1" role="none">
-          <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-            <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
-            <span class="inline-flex size-4 items-center justify-center rounded-full bg-blue-500">
-              <span class="text-xs leading-none text-white">J</span>
-            </span>
-            John Doe
-            <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-            </svg>
-          </label>
-          <label class="group/label flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
-            <input type="radio" name="assignee" class="peer appearance-none w-0 hidden">
-            <span class="inline-flex size-4 items-center justify-center rounded-full bg-green-500">
-              <span class="text-xs leading-none text-white">S</span>
-            </span>
-            Sally Doe
-            <svg class="bi bi--check2 size-4 ml-auto text-orange-500 invisible peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-            </svg>
-          </label>
-        </div>
-        <div class="p-2" role="none">
-          <button type="button" class="rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800 h-8 w-full">
-            Clear
-          </button>
-        </div>
-      </div>
-    </details>
+      </details>
+    </div>
   <% end %>
-  <div class="w-full pl-[6.5rem] flex items-center gap-1 pointer-events-none ease-out duration-200 opacity-0 -translate-y-6 peer-focus-within:opacity-100 peer-focus-within:translate-y-0 peer-focus-within:pointer-events-auto focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto">
+  <div class="max-w-3xl px-12 mx-auto w-full flex items-center gap-1 pointer-events-none ease-out duration-200 opacity-0 -translate-y-6 peer-focus-within:opacity-100 peer-focus-within:translate-y-0 peer-focus-within:pointer-events-auto focus-within:opacity-100 focus-within:translate-y-0 focus-within:pointer-events-auto">
     <span class="w-6">&nbsp;</span>
     <details class="relative z-0">
       <summary class="marker-none cursor-pointer">
