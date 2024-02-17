@@ -7,32 +7,31 @@
   .marker-none::-webkit-details-marker { display: none; }
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+@keyframes slide-to-right {
+  to { transform: translateX(30px); }
+}
+@keyframes slide-from-left {
+  from { transform: translateX(-30px); }
 }
 
-@keyframes slideOutRight {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    transform: translate3d(100%, 0, 0);
-  }
+/* only apply the view transition animation, when the navigation is _not_ coming _from_ a Task Show page */
+:not([data-from-path^="/tasks/"])::view-transition-old(aside) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
-
-::view-transition-new(aside) {
-  animation: 0.25s ease 0s slideInRight backwards;
-}
-
-::view-transition-old(aside) {
-  animation: 0.125s ease 0s slideOutRight forwards;
+:not([data-from-path^="/tasks/"])::view-transition-new(aside) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
