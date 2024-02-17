@@ -93,8 +93,22 @@
     <ul class="mt-2 max-w-3xl px-12 mx-auto space-y-2 relative-z-10">
       <% tasks.each do |task| %>
         <li class="group flex gap-x-2 items-center flex-wrap">
-          <%= icon "app", classes: "size-6 text-slate-400 dark:text-slate-600" %>
-          <%= text_field_tag "foo", task.title, class: "peer bg-transparent w-10/12 placeholder:text-slate-600 focus:outline-none", placeholder: "New task" %>
+          <%= button_to task, action: "update", form_class: "size-6 relative group", params: { task: {completed: "toggle"} }, class: "text-slate-500 dark:text-slate-400" do %>
+            <% if task.completed? %>
+              <%= icon "check2", classes: "size-4 absolute inset-x-0 mx-auto top-[5px] text-orange-500" %>
+              <%= icon "app", classes: "size-6 absolute inset-0 text-orange-500" %>
+            <% else %>
+              <%= icon "check2", classes: "size-4 text-slate-400 dark:text-slate-500 absolute inset-x-0 mx-auto top-[5px] invisible group-hover:visible" %>
+              <%= icon "app", classes: "size-6 absolute inset-0" %>
+            <% end %>
+          <% end %>
+
+          <% if task.completed? %>
+            <p class="w-10/12 text-base dark:text-slate-400 line-through decoration-orange-500"><%= task.title %></p>
+          <% else %>
+            <%= text_field_tag "foo", task.title, class: "peer bg-transparent w-10/12 placeholder:text-slate-600 focus:outline-none", placeholder: "New task" %>
+          <% end %>
+
           <details class="ml-auto relative">
             <summary class="marker-none cursor-pointer">
               <div class="size-5 text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full">
