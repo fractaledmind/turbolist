@@ -33,6 +33,8 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   def update
+    # TODO: Ensure that toggling completion from the `details` section redirects to @task,
+    # but toggling from the `main` section redirects to tasks_path.
     if @task.update(task_params)
       redirect_to @task, notice: "Task was successfully updated.", status: :see_other
     else
