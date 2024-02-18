@@ -347,35 +347,19 @@
           <div class="absolute z-50 w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950">
             <div class="py-1" role="none">
               <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
-                <svg class="bi bi--search size-3 text-inherit" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
-                </svg>
+                <%= icon "search", classes: "size-3 text-inherit" %>
                 <input class="bg-transparent focus:outline-none" placeholder="Search or create label" />
               </div>
             </div>
             <div class="py-1" role="none">
-              <label class="group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-                <input type="checkbox" class="peer hidden w-0 appearance-none" />
-                <svg class="bi bi--tag size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-500 dark:text-slate-400 dark:group-hover/label:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"></path>
-                  <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"></path>
-                </svg>
-                Tutorial
-                <svg class="bi bi--check2 invisible ml-auto size-4 text-orange-500 peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"></path>
-                </svg>
-              </label>
-              <label class="group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-                <input type="checkbox" class="peer hidden w-0 appearance-none" />
-                <svg class="bi bi--tag size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-500 dark:text-slate-400 dark:group-hover/label:text-white" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"></path>
-                  <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"></path>
-                </svg>
-                reminder
-                <svg class="bi bi--check2 invisible ml-auto size-4 text-orange-500 peer-checked:visible" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"></path>
-                </svg>
-              </label>
+              <%= form.collection_check_boxes :labels, Task.unique_labels, :itself, :itself do |builder| %>
+                <%= builder.label class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300" do %>
+                  <%= builder.check_box class: "peer hidden w-0 appearance-none" %>
+                  <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+                  <%= builder.text %>
+                  <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+                <% end %>
+              <% end %>
             </div>
             <div class="p-2" role="none">
               <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800">Clear</button>
