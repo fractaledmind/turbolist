@@ -1,5 +1,5 @@
 <article id="<%= dom_id task %>" class="flex h-full flex-col">
-  <header class="space-y-6 bg-slate-300 dark:bg-slate-800 px-6 py-6">
+  <header class="space-y-6 bg-slate-100 dark:bg-slate-800 px-6 py-6">
     <div class="flex items-center justify-start gap-2">
       <%= link_to tasks_path, class: "inline-flex size-8 items-center justify-center rounded-full bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white" do %>
         <%= icon "x-lg", classes: "size-4" %>
@@ -389,6 +389,13 @@
   </header>
 
   <section class="my-4 flex flex-grow flex-col justify-end">
+    <%= form_with(model: task, class: "flex-grow px-6") do |form| %>
+      <%= form.rich_text_area :description %>
+
+      <%# TODO: support cmd+enter to submit form %>
+      <%= form.submit class: "sr-only" %>
+    <% end %>
+
     <p class="text-center text-sm text-slate-400 dark:text-gray-500">
       Created by Stephen &middot;
 
