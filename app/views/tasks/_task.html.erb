@@ -338,10 +338,8 @@
         <details class="relative z-0">
           <summary class="marker-none cursor-pointer">
             <div class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white">
-              <svg class="bi bi--tag size-2.5 text-slate-400" fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-                <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"></path>
-                <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"></path>
-              </svg>
+              <%= icon "tag", classes: "size-2.5 text-slate-400" %>
+              <%= task.labels.join(", ") %>
             </div>
           </summary>
           <div class="absolute z-50 w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950">
