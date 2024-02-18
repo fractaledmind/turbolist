@@ -10,3 +10,6 @@ navigation.addEventListener('navigate', (event) => {
   document.documentElement.dataset.fromPath = fromPath;
   document.documentElement.dataset.toPath = toUrl.pathname;
 });
+
+import "trix"
+import "@rails/actiontext"
