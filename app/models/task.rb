@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   has_rich_text :description
 
+  attribute :labels, type: Array, default: []
+
   validates :title, presence: true
 
   def completed? = completed_at.present?
