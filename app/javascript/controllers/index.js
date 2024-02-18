@@ -6,5 +6,7 @@ import { application } from "./application"
 
 import FormController from "./form_controller"
 import AutosaveController from "./autosave_controller"
+import CheckboxesController from "./checkboxes_controller"
 application.register("form", FormController)
 application.register("autosave", AutosaveController)
+application.register("checkboxes", CheckboxesController)
