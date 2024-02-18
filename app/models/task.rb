@@ -1,7 +1,10 @@
 class Task < ApplicationRecord
+  include ArrayColumns
+
   has_rich_text :description
 
   attribute :labels, type: Array, default: []
+  array_columns :labels
 
   validates :title, presence: true
 
