@@ -5,4 +5,6 @@
 import { application } from "./application"
 
 import FormController from "./form_controller"
+import AutosaveController from "./autosave_controller"
 application.register("form", FormController)
+application.register("autosave", AutosaveController)
