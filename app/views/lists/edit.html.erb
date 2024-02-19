@@ -1,0 +1,12 @@
+<% content_for :title, "Editing list" %>
+
+<h1>Editing list</h1>
+
+<%= render "form", list: @list %>
+
+<br>
+
+<div>
+  <%= link_to "Show this list", @list %> |
+  <%= link_to "Back to lists", lists_path %>
+</div>

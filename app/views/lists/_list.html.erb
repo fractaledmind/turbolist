@@ -1,0 +1,17 @@
+<div id="<%= dom_id list %>">
+  <p>
+    <strong>Title:</strong>
+    <%= list.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= list.description %>
+  </p>
+
+  <p>
+    <strong>Avatar:</strong>
+    <%= link_to list.avatar.filename, list.avatar if list.avatar.attached? %>
+  </p>
+
+</div>
