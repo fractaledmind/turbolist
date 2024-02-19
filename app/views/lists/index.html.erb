@@ -1,16 +1,54 @@
-<p style="color: green"><%= notice %></p>
+<div class="h-full flex flex-col overflow-y-auto bg-white rounded-xl py-6 dark:bg-slate-900 dark:border-slate-800">
+  <div class="px-6 flex items-center justify-end gap-2 ">
+    <%= link_to new_list_path, class: "h-8 px-3 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full" do %>
+      <%= icon "plus-lg", classes: "size-4 mr-1" %>
+      New list
+    <% end %>
+  </div>
 
-<% content_for :title, "Lists" %>
+  <div class="max-w-3xl w-full px-12 mx-auto mt-6 mb-6">
+    <h1 class="text-5xl font-semibold">Lists</h1>
+    <div class="@container mt-6">
+      <p class="rounded-2xl p-2 @[668px]:rounded-full @[668px]:p-0 border-4 border-slate-100 bg-slate-100 dark:border-slate-800 dark:bg-slate-800 inline-flex items-center gap-2">
+        <span class="size-8 min-w-8 bg-indigo-100 dark:bg-indigo-700/50 inline-flex items-center justify-center rounded-full">
+          <%= icon("book", classes: "size-4 text-indigo-500") %>
+        </span>
+        <span class="text-base text-indigo-500">
+          View, sort, and star important lists to the sidebar
+        </span>
+        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+          <%= icon "arrow-up-right", classes: "size-4" %>
+        </button>
+        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+          <%= icon "x-lg", classes: "size-4" %>
+        </button>
+      </p>
+    </div>
 
-<h1>Lists</h1>
+    <div class="mt-4">
+      <label for="email" class="sr-only">Search</label>
+      <div class="relative rounded-md shadow-sm">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <%= icon "search", classes: "size-5 text-gray-400" %>
+        </div>
+        <input type="text" name="name" id="name" class="block w-full rounded-full border-0 px-4 py-1.5 pl-10 dark:bg-slate-800 text-slate-900 dark:text-slate-400 shadow-sm placeholder:text-gray-400 focus:bg-slate-700 focus:outline-none" placeholder="Search ...">
+      </div>
+    </div>
 
-<div id="lists">
-  <% @lists.each do |list| %>
-    <%= render list %>
-    <p>
-      <%= link_to "Show this list", list %>
-    </p>
-  <% end %>
+    <div class="mt-6">
+      <h3 class="text-xl font-semibold">Lists</h3>
+
+      <ul class="mt-2 max-w-3xl mx-auto space-y-2 relative-z-10">
+        <% @lists.each do |list| %>
+          <li class="relative hover:bg-slate-800 p-4 rounded flex items-center gap-2">
+            <span>□</span>
+            <%= link_to list.title, list_path(list), class: "after:absolute after:inset-0 after:block" %>
+            <button type="button" class="z-10 relative ml-auto text-slate-500 hover:text-slate-600 dark:text-slate-400  dark:hover:text-white">
+              <%= icon "star-fill", classes: "size-3" %>
+            </button>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New list", new_list_path %>
