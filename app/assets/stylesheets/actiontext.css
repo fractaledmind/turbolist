@@ -5,7 +5,23 @@
 */
 @import 'trix';
 
-/* TODO: Add dark mode styles */
+@media(prefers-color-scheme: dark) {
+  trix-toolbar .trix-button {
+    @apply bg-transparent border-slate-700 text-slate-200;
+  }
+  trix-toolbar .trix-button::before {
+    filter: invert(100%);
+  }
+  trix-toolbar .trix-button-group {
+    @apply border-slate-700;
+  }
+  trix-toolbar .trix-button:not(:first-child) {
+    @apply border-slate-700;
+  }
+  trix-editor {
+    @apply bg-transparent border-slate-700;
+  }
+}
 
 /*
  * We need to override trix.css’s image gallery styles to accommodate the
