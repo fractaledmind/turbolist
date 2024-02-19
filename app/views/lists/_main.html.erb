@@ -1,0 +1,73 @@
+<%# locals: (list:) -%>
+
+<div class="h-full flex flex-col overflow-y-auto bg-white rounded-xl py-6 dark:bg-slate-900 dark:border-slate-800">
+  <div class="px-6 flex items-center justify-between gap-2 ">
+    <div class="">
+      <button type="button" class="h-8 px-3 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+        Share
+      </button>
+      <small class="dark:text-slate-500">This list is private</small>
+    </div>
+    <div class="flex justify-end gap-2">
+      <button type="button" class="size-8 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+        <%= icon "star-fill", classes: "size-4" %>
+      </button>
+      <details class="relative z-50">
+        <summary class="marker-none cursor-pointer">
+          <div class="size-8 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+            <%= icon "three-dots-vertical", classes: "size-4" %>
+          </div>
+        </summary>
+        <ul class="absolute right-0 z-50 w-48 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:bg-slate-950">
+          <li>
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right size-3" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5" />
+              </svg>
+              Unsubscribe
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy size-3" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
+              </svg>
+              Copy link
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise size-3" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z" />
+                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466" />
+              </svg>
+              Mark all incomplete
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 text-red-500 hover:bg-slate-300 dark:hover:bg-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3 size-3 text-red-500" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+              </svg>
+              Delete task
+            </a>
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="max-w-3xl px-12 mx-auto mt-6 mb-6 space-y-6 flex flex-col flex-grow">
+    <%= form_with(model: list, class: "", data: { controller: 'autosave' }) do |form| %>
+      <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-5xl placeholder:text-slate-600 focus:outline-none", placeholder: "Untitled", autofocus: true, autocomplete: false, value: form.object.title %>
+      <%= form.submit class: "sr-only" %>
+    <% end %>
+
+    <section class="flex flex-grow flex-col justify-end">
+      <%= form_with(model: list, class: "flex-grow flex flex-col") do |form| %>
+        <%= form.rich_text_area :description, rows: 10, class: "h-full", placeholder: "Start typing..." %>
+        <%= form.submit class: "sr-only" %>
+      <% end %>
+    </section>
+  </div>
+</div>
