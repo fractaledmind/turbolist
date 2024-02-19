@@ -61,11 +61,14 @@
       </details>
     </div>
 
-    <%= form_with(model: task, class: "group flex flex-wrap items-center gap-x-2", data: { controller: 'autosave' }) do |form| %>
+    <div class="group flex flex-wrap items-center gap-x-2">
       <% if task.completed? %>
         <h1 class="w-11/12 text-3xl dark:text-slate-400 line-through decoration-orange-500" id="<%= dom_id(task, :title) %>"><%= task.title %></h1>
       <% else %>
-        <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title, id: dom_id(task, :title) %>
+        <%= form_with(model: task, class: "", data: { controller: 'autosave' }) do |form| %>
+          <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-3xl placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title, id: dom_id(task, :title) %>
+          <%= form.submit class: "sr-only" %>
+        <% end %>
       <% end %>
 
       <details class="relative ml-auto">
@@ -335,40 +338,44 @@
             </div>
           </div>
         </details>
-        <details class="relative z-0">
-          <summary class="marker-none cursor-pointer">
-            <div class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white">
-              <%= icon "tag", classes: "size-2.5 text-slate-400" %>
-              <%= task.labels.join(", ") %>
-            </div>
-          </summary>
-          <div class="absolute z-50 w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950"
-              data-controller="checkboxes">
-            <div class="py-1" role="none">
-              <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
-                <%= icon "search", classes: "size-3 text-inherit" %>
-                <input class="bg-transparent focus:outline-none" placeholder="Search or create label" />
+        <turbo-frame id="<%= dom_id(task, :labels) %>">
+          <details class="relative z-0" <%= "open" if turbo_frame_request_id.present? %>>
+            <summary class="marker-none cursor-pointer">
+              <div class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white">
+                <%= icon "tag", classes: "size-2.5 text-slate-400" %>
+                <%= task.labels.join(", ") %>
               </div>
-            </div>
-            <div class="py-1" role="none">
-              <%= form.collection_check_boxes :labels, Task.unique_labels, :itself, :itself do |builder| %>
-                <%= builder.label class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
-                  <%= builder.check_box class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child" } %>
-                  <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
-                  <%= builder.text %>
-                  <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
-                <% end %>
+            </summary>
+            <div class="absolute z-50 w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950"
+                data-controller="checkboxes">
+              <%= form_with(model: task, class: "", data: { controller: 'autosave' }) do |form| %>
+                <div class="py-1" role="none">
+                  <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
+                    <%= icon "search", classes: "size-3 text-inherit" %>
+                    <input class="bg-transparent focus:outline-none" placeholder="Search or create label" />
+                  </div>
+                </div>
+                <div class="py-1" role="none">
+                  <%= form.collection_check_boxes :labels, Task.unique_labels, :itself, :itself do |builder| %>
+                    <%= builder.label class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
+                      <%= builder.check_box class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child" } %>
+                      <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+                      <%= builder.text %>
+                      <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="p-2" role="none">
+                  <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800" data-action="checkboxes#deselectAllAndSubmit">Clear</button>
+                </div>
+
+                <%= form.submit class: "sr-only" %>
               <% end %>
             </div>
-            <div class="p-2" role="none">
-              <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800" data-action="checkboxes#deselectAllAndSubmit">Clear</button>
-            </div>
-          </div>
-        </details>
+          </details>
+        </turbo-frame>
       </div>
-
-      <%= form.submit class: "hidden" %>
-    <% end %>
+    </div>
   </header>
 
   <section class="my-4 flex flex-grow flex-col justify-end">
