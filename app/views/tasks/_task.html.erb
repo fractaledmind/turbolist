@@ -352,7 +352,7 @@
             </div>
             <div class="py-1" role="none">
               <%= form.collection_check_boxes :labels, Task.unique_labels, :itself, :itself do |builder| %>
-                <%= builder.label class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300" do %>
+                <%= builder.label class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
                   <%= builder.check_box class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child" } %>
                   <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
                   <%= builder.text %>
