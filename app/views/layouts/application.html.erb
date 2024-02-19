@@ -46,10 +46,10 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
+                    <%= link_to tasks_path, class: "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6" do %>
                       <%= icon("ui-checks", classes: "text-orange-500") %>
                       Tasks
-                    </a>
+                    <% end %>
                   </li>
                   <li>
                     <a href="#" class="hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
@@ -91,7 +91,7 @@
                 <div class="relative pl-6 text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 px-2 flex items-center justify-between">
                   <span class="py-1">
                     <span class="group-hover/sidebar:text-slate-500 dark:group-hover/sidebar:text-white">Lists</span>
-                    <a href="#browse-all" class="invisible group-hover/sidebar:visible ml-1 text-slate-400 after:absolute after:inset-0 after:block">Browse all</a>
+                    <%= link_to "Browse all", lists_path, class: "invisible group-hover/sidebar:visible ml-1 text-slate-400 after:absolute after:inset-0 after:block"%>
                   </span>
 
                   <span class="invisible group-hover/sidebar:visible z-10 flex items-center gap-px">
@@ -104,70 +104,14 @@
                   </span>
                 </div>
                 <ul role="list" class="">
-                  <li>
-                    <a href="#" class="hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
-                      <span class="">👋</span>
-                      Getting Started
-                    </a>
-                  </li>
-                  <li>
-                    <details class="hover:bg-slate-100 dark:hover:bg-slate-800" open>
-                      <summary class="group/summary cursor-pointer flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-[30px]">
-                        Work
-                        <span class="ml-auto invisible group-hover/summary:visible flex items-center gap-px">
-                          <button type="button" class="size-7 hover:bg-slate-200 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full">
-                            <%= icon("folder-plus", classes: "size-4 text-slate-500 dark:text-slate-400") %>
-                          </button>
-                        </span>
-                      </summary>
-                      <ul role="list" class="">
-                        <li>
-                          <a href="#" class="hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-14">
-                            <span class="">📆</span>
-                            This Week
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" class="hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-14">
-                            <span class="">📝</span>
-                            Meeting Notes
-                          </a>
-                        </li>
-                      </ul>
-                    </details>
-                  </li>
-                  <li>
-                    <details class="hover:bg-slate-100 dark:hover:bg-slate-800" open>
-                      <summary class="group/summary cursor-pointer flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-[30px]">
-                        Personal
-                        <span class="ml-auto invisible group-hover/summary:visible flex items-center gap-px">
-                          <button type="button" class="size-7 hover:bg-slate-200 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full">
-                            <%= icon("journal-plus", classes: "size-4 text-slate-500 dark:text-slate-400") %>
-                          </button>
-                        </span>
-                      </summary>
-                      <ul role="list" class="">
-                        <li>
-                          <a href="#" class="hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-14">
-                            <span class="">🍎</span>
-                            Groceries
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" class="hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-14">
-                            <span class="">📚️</span>
-                            Reading List
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" class="hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-14">
-                            <span class="">🎯</span>
-                            Habits
-                          </a>
-                        </li>
-                      </ul>
-                    </details>
-                  </li>
+                  <% List.all.each do |list| %>
+                    <li>
+                      <%= link_to list, class: "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6" do %>
+                        <span class="">□</span>
+                        <%= list.title %>
+                      <% end %>
+                    </li>
+                  <% end %>
                 </ul>
               </li>
             </ul>
