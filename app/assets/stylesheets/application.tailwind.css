@@ -28,11 +28,11 @@
 }
 
 /* only apply the view transition animation, when the navigation is _not_ coming _from_ a Task Show page */
-:not([data-from-path^="/tasks/"])::view-transition-old(aside) {
+/* :not([data-from-path^="/tasks/"])::view-transition-old(aside) {
   animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 :not([data-from-path^="/tasks/"])::view-transition-new(aside) {
   animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
-}
+} */
