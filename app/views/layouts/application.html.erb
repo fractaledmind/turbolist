@@ -112,12 +112,15 @@
                   <% List.all.each do |list| %>
                     <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-2 px-2 py-1 text-sm leading-6 pl-6" data-controller="emoji-picker">
                       <% emoji_popover_dom_id = dom_id(list, :emoji_popover) %>
-                      <button type="button"
-                              class="relative z-10 size-6 text-slate-500 hover:bg-slate-300 dark:text-slate-400 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full"
-                              style="--anchor-name: --<%= emoji_popover_dom_id %>"
-                              popovertarget="<%= emoji_popover_dom_id %>">
-                        <input data-emoji-picker-target="input" class="appearance-none border-0 bg-transparent w-[2ch] text-center text-lg pointer-events-none" value="□" />
-                      </button>
+                      <%= form_with(model: list, data: { controller: :autosave }) do |form| %>
+                        <button type="button"
+                                class="relative z-10 size-6 text-slate-500 hover:bg-slate-300 dark:text-slate-400 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full"
+                                style="--anchor-name: --<%= emoji_popover_dom_id %>"
+                                popovertarget="<%= emoji_popover_dom_id %>">
+                          <%= form.text_field :avatar, data: { action: "autosave#save", emoji_picker_target: "input" }, class: "appearance-none border-0 bg-transparent w-[2ch] text-center text-lg pointer-events-none" %>
+                        </button>
+                        <%= form.submit class: "sr-only" %>
+                      <% end %>
                       <div id="<%= emoji_popover_dom_id %>"
                            popover="auto"
                            style="--anchor: --<%= emoji_popover_dom_id %>"
