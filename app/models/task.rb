@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   include ArrayColumns
 
-  belongs_to :list
+  belongs_to :list, optional: true
 
   has_rich_text :description
 
