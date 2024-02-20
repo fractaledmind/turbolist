@@ -9,6 +9,7 @@ export default class extends Controller {
     this.element.querySelector('emoji-picker').addEventListener('emoji-click', e => {
       if (this.hasInputTarget) {
         this.inputTarget.value = e.detail.unicode
+        this.inputTarget.dispatchEvent(new Event('input', { bubbles: true }));
       }
       this.popoverTarget.hidePopover()
     })
