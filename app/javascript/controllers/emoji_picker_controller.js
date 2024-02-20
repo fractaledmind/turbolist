@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import 'emoji-picker-element';
 
 export default class extends Controller {
-  static targets = [ "input" ]
+  static targets = [ "input", "popover" ]
 
   connect() {
     this.element[this.identifier] = this
@@ -10,7 +10,7 @@ export default class extends Controller {
       if (this.hasInputTarget) {
         this.inputTarget.value = e.detail.unicode
       }
-      this.element.open = false
+      this.popoverTarget.hidePopover()
     })
   }
 }

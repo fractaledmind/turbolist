@@ -110,18 +110,19 @@
                 </div>
                 <ul role="list" class="">
                   <% List.all.each do |list| %>
-                    <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
+                    <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-2 px-2 py-1 text-sm leading-6 pl-6" data-controller="emoji-picker">
                       <% emoji_popover_dom_id = dom_id(list, :emoji_popover) %>
                       <button type="button"
-                              class="relative z-10 hover:bg-red-100"
+                              class="relative z-10 size-6 text-slate-500 hover:bg-slate-300 dark:text-slate-400 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full"
                               style="--anchor-name: --<%= emoji_popover_dom_id %>"
                               popovertarget="<%= emoji_popover_dom_id %>">
-                        Toggle
+                        <input data-emoji-picker-target="input" class="appearance-none border-0 bg-transparent w-[2ch] text-center text-lg pointer-events-none" value="□" />
                       </button>
                       <div id="<%= emoji_popover_dom_id %>"
                            popover="auto"
                            style="--anchor: --<%= emoji_popover_dom_id %>"
-                           class="rounded overflow-hidden border-0">
+                           class="rounded overflow-hidden border-0"
+                           data-emoji-picker-target="popover">
                         <emoji-picker></emoji-picker>
                       </div>
                       <%= link_to list.title, list, class: "after:absolute after:inset-0 after:block" %>
