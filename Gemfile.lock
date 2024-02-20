@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: cd4a5b07332c8b1f1101d43b4db736e7d75dbdc3
+  revision: 554e71af0b913795a8bdd2a696819e3182f87c61
   branch: main
   specs:
     actioncable (7.2.0.alpha)
@@ -257,7 +257,7 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.17.0)
+    selenium-webdriver (4.18.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
