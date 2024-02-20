@@ -16,6 +16,11 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <script type="module">
+      if (!("anchorName" in document.documentElement.style)) {
+        import("https://unpkg.com/@oddbird/css-anchor-positioning");
+      }
+    </script>
   </head>
 
   <body class="h-full">
@@ -91,7 +96,7 @@
                 <div class="relative pl-6 text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 px-2 flex items-center justify-between">
                   <span class="py-1">
                     <span class="group-hover/sidebar:text-slate-500 dark:group-hover/sidebar:text-white">Lists</span>
-                    <%= link_to "Browse all", lists_path, class: "invisible group-hover/sidebar:visible ml-1 text-slate-400 after:absolute after:inset-0 after:block"%>
+                    <%= link_to "Browse all", lists_path, class: "invisible group-hover/sidebar:visible ml-1 text-slate-400 after:absolute after:inset-0 after:block" %>
                   </span>
 
                   <span class="invisible group-hover/sidebar:visible z-10 flex items-center gap-px">
@@ -105,11 +110,21 @@
                 </div>
                 <ul role="list" class="">
                   <% List.all.each do |list| %>
-                    <li>
-                      <%= link_to list, class: "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6" do %>
-                        <span class="">□</span>
-                        <%= list.title %>
-                      <% end %>
+                    <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
+                      <% emoji_popover_dom_id = dom_id(list, :emoji_popover) %>
+                      <button type="button"
+                              class="relative z-10 hover:bg-red-100"
+                              style="--anchor-name: --<%= emoji_popover_dom_id %>"
+                              popovertarget="<%= emoji_popover_dom_id %>">
+                        Toggle
+                      </button>
+                      <div id="<%= emoji_popover_dom_id %>"
+                           popover="auto"
+                           style="--anchor: --<%= emoji_popover_dom_id %>"
+                           class="rounded overflow-hidden border-0">
+                        <emoji-picker></emoji-picker>
+                      </div>
+                      <%= link_to list.title, list, class: "after:absolute after:inset-0 after:block" %>
                     </li>
                   <% end %>
                 </ul>

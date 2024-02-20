@@ -27,6 +27,30 @@
   from { transform: translateX(-30px); }
 }
 
+[popovertarget] {
+  anchor-name: var(--anchor-name);
+}
+[popover] {
+  anchor-default: var(--anchor);
+  position-fallback: --fallback;
+}
+@position-fallback --fallback {
+  @try {
+    bottom: anchor(top);
+    left: anchor(left)
+  }
+  @try {
+    top: anchor(bottom);
+    left: anchor(left)
+  }
+}
+[popover] {
+  position: absolute;
+  inset: auto;
+  margin: 0;
+  padding: 0;
+}
+
 /* only apply the view transition animation, when the navigation is _not_ coming _from_ a Task Show page */
 /* :not([data-from-path^="/tasks/"])::view-transition-old(aside) {
   animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
