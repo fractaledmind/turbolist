@@ -16,7 +16,9 @@ import "@rails/actiontext"
 
 const element = document.querySelector("trix-editor")
 element.addEventListener("keydown", event => {
-  if (event.key == "Enter" && event.metaKey) {
+  const metaEnter = event.key === "Enter" && (event.metaKey || event.ctrlKey)
+
+  if (metaEnter) {
     event.preventDefault()
     element.inputElement.form.requestSubmit()
   }
