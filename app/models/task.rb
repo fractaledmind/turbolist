@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   include ArrayColumns
 
+  belongs_to :list
+
   has_rich_text :description
 
   attribute :labels, type: Array, default: []
