@@ -54,7 +54,13 @@
 ::view-transition-group(*),
 ::view-transition-old(*),
 ::view-transition-new(*) {
-  animation-duration: 1s;
+  animation-duration: 210ms;
+}
+
+::view-transition-old(notice),
+::view-transition-new(notice) {
+  /* Make the text views match the height of their group */
+  height: 100%;
 }
 
 /* only apply the view transition animation, when the navigation is _not_ coming _from_ a Task Show page */
