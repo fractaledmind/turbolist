@@ -5,44 +5,53 @@
 */
 @import 'trix';
 
-@media(prefers-color-scheme: dark) {
-  trix-toolbar .trix-button {
-    @apply bg-transparent border-slate-700 text-slate-200;
+@layer components {
+  /* Ensure Trix editor looks reasonable in dark mode */
+  @media(prefers-color-scheme: dark) {
+    trix-toolbar .trix-button {
+      @apply bg-transparent border-slate-700 text-slate-200;
+    }
+    trix-toolbar .trix-button::before {
+      filter: invert(100%);
+    }
+    trix-toolbar .trix-button-group {
+      @apply border-slate-700;
+    }
+    trix-toolbar .trix-button:not(:first-child) {
+      @apply border-slate-700;
+    }
+    trix-editor {
+      @apply bg-transparent border-slate-700;
+    }
   }
-  trix-toolbar .trix-button::before {
-    filter: invert(100%);
-  }
-  trix-toolbar .trix-button-group {
-    @apply border-slate-700;
-  }
-  trix-toolbar .trix-button:not(:first-child) {
-    @apply border-slate-700;
-  }
-  trix-editor {
-    @apply bg-transparent border-slate-700;
-  }
-}
 
-/*
- * We need to override trix.css’s image gallery styles to accommodate the
- * <action-text-attachment> element we wrap around attachments. Otherwise,
- * images in galleries will be squished by the max-width: 33%; rule.
-*/
-.trix-content .attachment-gallery > action-text-attachment,
-.trix-content .attachment-gallery > .attachment {
-  flex: 1 0 33%;
-  padding: 0 0.5em;
-  max-width: 33%;
-}
+  /* Hide the nesting level buttons to keep width of editor in line with page layout */
+  .trix-button.trix-button--icon-decrease-nesting-level,
+  .trix-button.trix-button--icon-increase-nesting-level{
+    display: none;
+  }
 
-.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
-.trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
-.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
-  flex-basis: 50%;
-  max-width: 50%;
-}
+  /*
+  * We need to override trix.css’s image gallery styles to accommodate the
+  * <action-text-attachment> element we wrap around attachments. Otherwise,
+  * images in galleries will be squished by the max-width: 33%; rule.
+  */
+  .trix-content .attachment-gallery > action-text-attachment,
+  .trix-content .attachment-gallery > .attachment {
+    flex: 1 0 33%;
+    padding: 0 0.5em;
+    max-width: 33%;
+  }
 
-.trix-content action-text-attachment .attachment {
-  padding: 0 !important;
-  max-width: 100% !important;
+  .trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+  .trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .trix-content action-text-attachment .attachment {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
 }
