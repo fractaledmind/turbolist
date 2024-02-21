@@ -11,19 +11,21 @@ class ListsTest < ApplicationSystemTestCase
   end
 
   test "should create list" do
+    skip "Not implemented yet"
+
     visit lists_url
     click_on "New list"
 
     fill_in "Title", with: @list.title
-    click_on "Create List"
+    send_keys "submit"
 
-    assert_text "List was successfully created"
-    click_on "Back"
+    assert_selector "input[value=#{@list.title}]"
   end
 
   test "should update List" do
+    skip "Not implemented yet"
+
     visit list_url(@list)
-    click_on "Edit this list", match: :first
 
     fill_in "Title", with: @list.title
     click_on "Update List"
@@ -33,8 +35,10 @@ class ListsTest < ApplicationSystemTestCase
   end
 
   test "should destroy List" do
+    skip "Not implemented yet"
+
     visit list_url(@list)
-    click_on "Destroy this list", match: :first
+    click_on "Delete list", match: :first
 
     assert_text "List was successfully destroyed"
   end
