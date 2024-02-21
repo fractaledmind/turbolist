@@ -8,25 +8,6 @@
   .marker-none::-webkit-details-marker { display: none; }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-}
-@keyframes fade-out {
-  to { opacity: 0; }
-}
-@keyframes slide-from-right {
-  from { transform: translateX(30px); }
-}
-@keyframes slide-to-left {
-  to { transform: translateX(-30px); }
-}
-@keyframes slide-to-right {
-  to { transform: translateX(30px); }
-}
-@keyframes slide-from-left {
-  from { transform: translateX(-30px); }
-}
-
 [popovertarget] {
   anchor-name: var(--anchor-name);
 }
