@@ -1,6 +1,6 @@
-<%= form_with(model: task, data: { controller: :form, action: "turbo:submit-end->form#clear" }) do |form| %>
-  <%= form.label :title, class: "peer block hover:bg-slate-200 dark:hover:bg-slate-800 py-1 group/input" do %>
-    <div class="max-w-3xl px-12 mx-auto w-full flex gap-x-2 items-center">
+<%= form_with(model: task, class: "", data: { controller: :form, action: "turbo:submit-end->form#clear" }) do |form| %>
+  <%= form.label :title, class: "peer block hover:bg-slate-200 dark:hover:bg-slate-800 py-1 group/input " do %>
+    <div class="max-w-3xl px-12 mx-auto w-full flex gap-x-2 items-center [view-transition-name:taskform]">
       <%= icon "app-indicator", classes: "size-6 text-slate-400 dark:text-slate-600" %>
       <%= form.text_field :title, class: "peer bg-transparent focus:w-10/12 w-[7ch] placeholder:text-slate-600 focus:outline-none", placeholder: "New task", autocomplete: false, value: form.object.title || "" %>
       <span class="peer-focus:invisible inline-flex items-center justify-center size-5 rounded-full bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-600 dark:group-hover/input:bg-slate-700 dark:group-hover/input:text-slate-500">C</span>
@@ -286,5 +286,5 @@
     </turbo-frame>
   </div>
 
-  <%= form.submit class: "hidden" %>
+  <%= form.submit class: "sr-only" %>
 <% end %>

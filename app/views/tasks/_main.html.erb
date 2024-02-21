@@ -2,7 +2,7 @@
 
 <div class="h-full overflow-y-auto bg-white rounded-xl py-6 dark:bg-slate-900 dark:border-slate-800">
   <div class="px-6 flex justify-end">
-    <details class="relative z-0">
+    <details class="relative z-0 [view-transition-name:action]">
       <summary class="marker-none cursor-pointer">
         <div class="size-8 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white inline-flex items-center justify-center rounded-full">
           <%= icon "sort-down", classes: "size-4" %>
@@ -68,19 +68,19 @@
   </div>
 
   <div class="max-w-3xl w-full px-12 mx-auto mt-6 mb-6">
-    <h1 class="text-5xl font-semibold">Inbox</h1>
+    <h1 class="text-5xl font-semibold w-fit [view-transition-name:header]">Inbox</h1>
     <div class="@container mt-6">
-      <p class="rounded-2xl p-2 @[668px]:rounded-full @[668px]:p-0 border-4 border-slate-100 bg-slate-100 dark:border-slate-800 dark:bg-slate-800 inline-flex items-center gap-2">
-        <span class="size-8 min-w-8 bg-indigo-100 dark:bg-indigo-700/50 inline-flex items-center justify-center rounded-full">
+      <p class="rounded-2xl p-2 @[668px]:rounded-full @[668px]:p-0 border-4 border-slate-100 bg-slate-100 dark:border-slate-800 dark:bg-slate-800 inline-flex items-center gap-2 [view-transition-name:notice]">
+        <span class="size-8 min-w-8 bg-indigo-100 dark:bg-indigo-700/50 inline-flex items-center justify-center rounded-full [view-transition-name:notice-icon]">
           <%= icon("book", classes: "size-4 text-indigo-500") %>
         </span>
-        <span class="text-base text-indigo-500">
+        <span class="text-base text-indigo-500 [view-transition-name:notice-text]">
           Manage all new and incoming tasks —&nbsp;create, move, schedule, and more
         </span>
-        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full [view-transition-name:notice-link]">
           <%= icon "arrow-up-right", classes: "size-4" %>
         </button>
-        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full">
+        <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full [view-transition-name:notice-action]">
           <%= icon "x-lg", classes: "size-4" %>
         </button>
       </p>
@@ -90,7 +90,7 @@
   <div class="">
     <%= render "form", task: Task.new %>
 
-    <ul class="mt-2 max-w-3xl px-12 mx-auto space-y-2 relative-z-10">
+    <ul class="mt-2 max-w-3xl px-12 mx-auto space-y-2 relative-z-10 [view-transition-name:tasks]">
       <% tasks.each do |task| %>
         <li class="group flex gap-x-2 items-center flex-wrap">
           <%= button_to task, action: "update", form_class: "size-6 relative group", params: { task: {completed: "toggle"} }, class: "text-slate-500 dark:text-slate-400" do %>
