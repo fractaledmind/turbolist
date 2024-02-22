@@ -1,13 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="task-labels"
+// Connects to data-controller="clone"
 export default class extends Controller {
-  static targets = [ "template", "input" ]
+  static targets = [ "template" ]
 
   connect() {
   }
 
-  clone(event) {
+  execute(event) {
     const clone = this.templateTarget.content.cloneNode(true)
     const value = event.target.value
 
@@ -38,19 +38,5 @@ export default class extends Controller {
     if (value.length > 0) {
       this.templateTarget.parentElement.appendChild(clone)
     }
-  }
-
-  search(event) {
-    const value = event.target.value.toLowerCase()
-    this.inputTargets.forEach((input) => {
-      const inputValue = input.value.toLowerCase()
-      if (inputValue.includes(value)) {
-        input.parentElement.style.display = null
-      } else if (input.checked) {
-        input.parentElement.style.display = null
-      } else {
-        input.parentElement.style.display = "none"
-      }
-    })
   }
 }
