@@ -15,3 +15,6 @@ application.register("emoji-picker", EmojiPickerController)
 
 import FormController from "./form_controller"
 application.register("form", FormController)
+
+import TaskLabelsController from "./task_labels_controller"
+application.register("task-labels", TaskLabelsController)
