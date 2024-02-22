@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="task-labels"
 export default class extends Controller {
-  static targets = [ "template" ]
+  static targets = [ "template", "input" ]
 
   connect() {
   }
@@ -34,6 +34,23 @@ export default class extends Controller {
     clone.querySelector("label").dataset.cloned = true
 
     this.element.querySelectorAll('[data-cloned]').forEach(el => el.remove())
-    this.templateTarget.parentElement.appendChild(clone)
+
+    if (value.length > 0) {
+      this.templateTarget.parentElement.appendChild(clone)
+    }
+  }
+
+  search(event) {
+    const value = event.target.value.toLowerCase()
+    this.inputTargets.forEach((input) => {
+      const inputValue = input.value.toLowerCase()
+      if (inputValue.includes(value)) {
+        input.parentElement.style.display = null
+      } else if (input.checked) {
+        input.parentElement.style.display = null
+      } else {
+        input.parentElement.style.display = "none"
+      }
+    })
   }
 }
