@@ -1,0 +1,51 @@
+<%# locals: (task:) -%>
+
+<div>
+  <% labels_form_dom_id = dom_id(task, :labels_form) %>
+  <button type="button"
+          class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
+          style="--anchor-name: --<%= labels_form_dom_id %>"
+          popovertarget="<%= labels_form_dom_id %>">
+    <%= icon "tag", classes: "size-2.5 text-slate-400" %>
+    <%= task.labels.join(", ") %>
+  </button>
+
+  <div id="<%= labels_form_dom_id %>"
+       popover="auto"
+       style="--anchor: --<%= labels_form_dom_id %>"
+       class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
+       data-controller="checkboxes clone search">
+    <%= form_with(model: task, class: "", data: { controller: 'autosave' }) do |form| %>
+      <div class="py-1" role="none">
+        <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
+          <%= icon "search", classes: "size-3 text-inherit" %>
+          <input autofocus class="bg-transparent focus:outline-none" placeholder="Search or create label" data-action="clone#execute search#execute" />
+        </div>
+      </div>
+      <div class="py-1" role="none">
+        <%= form.collection_check_boxes :labels, Task.unique_labels, :itself, :itself, {} do |builder| %>
+          <%= builder.label for: form.field_id(task.id, :label, builder.text), class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
+            <%= builder.check_box id: form.field_id(task.id, :label, builder.text), class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child", search_target: "input" } %>
+            <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+            <%= builder.text %>
+            <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+          <% end %>
+        <% end %>
+
+        <template data-clone-target="template">
+          <%= label_tag form.field_id(task.id, :label, "PLACEHOLDER"), data: { attribute_placeholder: "for" }, class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
+            <%= check_box_tag form.field_name(:labels, multiple: true), id: form.field_id(task.id, :label, "PLACEHOLDER"), class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child", attribute_placeholder: "id value" } %>
+            <%= icon "tag", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+            <span data-placeholder></span>
+            <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+          <% end %>
+        </template>
+      </div>
+      <div class="p-2" role="none">
+        <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800" data-action="checkboxes#deselectAllAndSubmit">Clear</button>
+      </div>
+
+      <%= form.submit class: "sr-only" %>
+    <% end %>
+  </div>
+</div>
