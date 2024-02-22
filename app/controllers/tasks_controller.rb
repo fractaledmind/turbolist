@@ -1,14 +1,13 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_tasks, only: %i[ index show ]
 
   # GET /tasks
   def index
-    @tasks = Task.all.order(created_at: :desc)
   end
 
   # GET /tasks/1
   def show
-    @tasks = Task.all.order(created_at: :desc)
   end
 
   # GET /tasks/new
@@ -36,7 +35,7 @@ class TasksController < ApplicationController
     # TODO: Ensure that toggling completion from the `details` section redirects to @task,
     # but toggling from the `main` section redirects to tasks_path.
     if @task.update(task_params)
-      redirect_to @task, notice: "Task was successfully updated.", status: :see_other
+      redirect_back fallback_location: @task, notice: "Task was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,6 +51,22 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_tasks
+      @tasks = Task.all.order(created_at: :desc)
+      case params[:grouping]
+      when "none" || "created_at"
+        @tasks = @tasks.group_by { :IGNORE_ME }
+      when "alphetical"
+        @tasks = @tasks.order(title: :desc).group_by { :IGNORE_ME }
+      when "list"
+        @tasks = @tasks.group_by { |task| task.list&.title }
+      when "label"
+        @tasks = @tasks.unique_labels.map { |label| [label, Task.with_any_labels(label)] }.to_h
+      else
+        @tasks = @tasks.group_by { :IGNORE_ME }
+      end
     end
 
     # Only allow a list of trusted parameters through.

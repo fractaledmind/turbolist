@@ -1,0 +1,75 @@
+<%# locals: () -%>
+
+<div class="[view-transition-name:action]">
+  <% grouping_form_dom_id = "tasks_grouping_form" %>
+  <button type="button"
+          class="h-8 px-3 py-1 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white inline-flex gap-1 items-center justify-center rounded-full"
+          style="--anchor-name: --<%= grouping_form_dom_id %>"
+          popovertarget="<%= grouping_form_dom_id %>">
+    <%= icon "sort-down", classes: ["size-4", ("text-blue-500" if params.key?(:grouping))] %>
+    <%= params[:grouping].humanize if params.key?(:grouping) %>
+  </button>
+
+  <div id="<%= grouping_form_dom_id %>"
+       popover="auto"
+       style="--anchor: --<%= grouping_form_dom_id %>"
+       class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
+       data-controller="checkboxes clone search">
+      <ul class="w-48 py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden">
+        <li>
+          <%= link_to url_for(grouping: :none), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%= params[:grouping] == "none" ? "bg-red-400" : "bg-transparent" %>"></span>
+            None
+          <% end %>
+        </li>
+        <!-- <li>
+          <%#= link_to url_for(grouping: :creator), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%#= params[:grouping] == "creator" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Creator
+          <%# end %>
+        </li> -->
+        <!-- <li>
+          <%#= link_to url_for(grouping: :assignee), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%#= params[:grouping] == "assignee" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Assignee
+          <%# end %>
+        </li> -->
+        <li>
+          <%= link_to url_for(grouping: :alphabetical), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%= params[:grouping] == "alphabetical" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Alphabetical
+          <% end %>
+        </li>
+        <li>
+          <%= link_to url_for(grouping: :created_at), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%= params[:grouping] == "created_at" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Creation date
+          <% end %>
+        </li>
+        <!-- <li>
+          <%#= link_to url_for(grouping: :due_date), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%#= params[:grouping] == "due_date" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Due date
+          <%# end %>
+        </li> -->
+        <!-- <li>
+          <%#= link_to url_for(grouping: :source), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%#= params[:grouping] == "source" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Source
+          <%# end %>
+        </li> -->
+        <li>
+          <%= link_to url_for(grouping: :list), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%= params[:grouping] == "list" ? "bg-red-400" : "bg-transparent" %>"></span>
+            List
+          <% end %>
+        </li>
+        <li>
+          <%= link_to url_for(grouping: :label), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
+            <span class="block size-1.5 rounded-full <%= params[:grouping] == "label" ? "bg-red-400" : "bg-transparent" %>"></span>
+            Label
+          <% end %>
+        </li>
+      </ul>
+  </div>
+</div>
