@@ -15,11 +15,13 @@ import "trix"
 import "@rails/actiontext"
 
 const element = document.querySelector("trix-editor")
-element.addEventListener("keydown", event => {
-  const metaEnter = event.key === "Enter" && (event.metaKey || event.ctrlKey)
+if (element) {
+  element.addEventListener("keydown", event => {
+    const metaEnter = event.key === "Enter" && (event.metaKey || event.ctrlKey)
 
-  if (metaEnter) {
-    event.preventDefault()
-    element.inputElement.form.requestSubmit()
-  }
-})
+    if (metaEnter) {
+      event.preventDefault()
+      element.inputElement.form.requestSubmit()
+    }
+  })
+}

@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import FormController from "./form_controller"
 import AutosaveController from "./autosave_controller"
-import CheckboxesController from "./checkboxes_controller"
-import EmojiPickerController from "./emoji_picker_controller"
-application.register("form", FormController)
 application.register("autosave", AutosaveController)
+
+import CheckboxesController from "./checkboxes_controller"
 application.register("checkboxes", CheckboxesController)
+
+import EmojiPickerController from "./emoji_picker_controller"
 application.register("emoji-picker", EmojiPickerController)
+
+import FormController from "./form_controller"
+application.register("form", FormController)
