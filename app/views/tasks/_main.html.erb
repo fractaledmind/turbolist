@@ -354,7 +354,7 @@
                 </div>
               </div>
             </details>
-            <turbo-frame id="<%= dom_id(task, :labels) %>">
+            <div>
               <% labels_form_dom_id = dom_id(task, :labels_form) %>
               <button type="button"
                       class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
@@ -402,9 +402,7 @@
                   <%= form.submit class: "sr-only" %>
                 <% end %>
               </div>
-            </turbo-frame>
-
-
+            </div>
             <a href="#" class="text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full text-xs py-1 px-2 -ml-1 gap-1">
               <%= icon "list", classes: "size-2.5 text-slate-400" %>
             </a>
