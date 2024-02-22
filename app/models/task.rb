@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   include ArrayColumns
 
   belongs_to :list, optional: true
+  accepts_nested_attributes_for :list
 
   has_rich_text :description
 
