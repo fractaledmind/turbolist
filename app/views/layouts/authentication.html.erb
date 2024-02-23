@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Turbolist" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="view-transition" content="same-origin" />
+    <%= turbo_refreshes_with(method: :morph, scroll: :preserve) %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body>
+    <header class="text-lg max-w-6xl mx-auto py-4 flex justify-between items-center border-b">
+      <h2 class="flex items-center gap-4">
+        <%= link_to root_path, class: "hover:underline" do %>
+          <code>Turbolist</code>
+        <% end %>
+      </h2>
+
+      <div class="inline-flex items-center gap-2">
+        <% if content_for?(:alternative) %>
+          <%= yield :alternative %>
+        <% else %>
+          <%= link_to "Sign in", sign_in_path %> |
+          <%= link_to "Sign up", sign_up_path %>
+        <% end %>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto text-center h-full pt-24">
+      <%= yield %>
+    </main>
+
+    <div class="fixed top-0 left-0 right-0 text-center py-2">
+      <% if notice.present? %>
+        <p id="notice"
+           class="py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block"
+           data-controller="fade">
+          <%= notice %>
+        </p>
+      <% end %>
+
+      <% if alert.present? %>
+        <p id="alert"
+           class="py-2 px-3 bg-red-50 text-red-500 font-medium rounded-lg inline-block"
+           data-controller="fade">
+          <%= alert %>
+        </p>
+      <% end %>
+    </div>
+  </body>
+</html>
