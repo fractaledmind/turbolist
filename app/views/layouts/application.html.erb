@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full bg-slate-200 text-slate-950 dark:bg-slate-950 dark:text-white">
+<html class="h-full">
   <head>
     <title><%= content_for(:title) || "Turbolist" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,7 +24,7 @@
     </script>
   </head>
 
-  <body class="h-full">
+  <body class="h-full bg-slate-200 text-slate-950 dark:bg-slate-950 dark:text-white">
     <div class="h-full grid <%= content_for?(:grid_cols) ? content_for(:grid_cols) : "grid-cols-[16rem_6fr_4fr]" %> auto-rows-fr">
       <div data-turbo-permanent class="w-64 flex flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
