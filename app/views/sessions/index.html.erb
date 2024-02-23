@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Sessions" %>
+
+<h1>Sessions</h1>
+
+<div id="sessions">
+  <% @sessions.each do |session| %>
+    <%= render session %>
+    <p>
+      <%= link_to "Show this session", session %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New session", new_session_path %>
