@@ -2,6 +2,7 @@ module Authenticatable
   include ActiveSupport::Concern
 
   included do
+    before_action :authenticate!
   end
 
 	def sign_in(user:)
