@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title><%= content_for(:title) || "Turbolist" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -19,7 +19,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="h-full">
     <header class="text-lg max-w-6xl mx-auto py-4 flex justify-between items-center border-b">
       <h2 class="flex items-center gap-4">
         <%= link_to root_path, class: "hover:underline" do %>
