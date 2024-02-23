@@ -1,5 +1,5 @@
 module Authenticatable
-  include ActiveSupport::Concern
+  extend ActiveSupport::Concern
 
   included do
     before_action :authenticate!
@@ -12,7 +12,7 @@ module Authenticatable
     )
     Current.session = session
     cookies.signed.permanent[Session::COOKIE_KEY] = {
-      value: session.encoded_id,
+      value: session.id,
       httponly: true,
       secure: !Rails.env.development?
     }
