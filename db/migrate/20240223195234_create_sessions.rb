@@ -2,8 +2,8 @@ class CreateSessions < ActiveRecord::Migration[7.2]
   def change
     create_table :sessions do |t|
       t.belongs_to :user, null: false, foreign_key: true
-      t.string :user_agent
-      t.string :ip_address
+      t.string :user_agent, null: false
+      t.string :ip_address, null: false
 
       t.timestamps
     end
