@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  # ----- unauthenticated actions -----
+  with_options only: %i[ new create ] do
+    skip_before_action :authenticate!
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -10,7 +15,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "User was successfully created."
+      sign_in(user: @user)
+      redirect_to user_root_path, notice: "Your profile was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

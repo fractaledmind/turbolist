@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  # ----- unauthenticated actions -----
+  with_options only: %i[ new create ] do
+    skip_before_action :authenticate!
+  end
+
   # GET /sessions/new
   def new
     @session = Session.new
