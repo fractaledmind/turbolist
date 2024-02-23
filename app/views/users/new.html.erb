@@ -1,11 +1,48 @@
-<% content_for :title, "New user" %>
+<% content_for :alternative do %>
+  <span>Already have an account?</span>
+  <%= link_to "Sign in", sign_in_path, class: "font-bold hover:underline" %>
+<% end %>
 
-<h1>New user</h1>
+<hgroup class="flex flex-col gap-4">
+  <h1 class="font-bold text-4xl">
+    Sign up now for <code>Turbolist</code>
+  </h1>
+  <p class="text-lg">
+    Home to all your lists
+  </p>
+</hgroup>
 
-<%= render "form", user: @user %>
+<div class="max-w-sm mx-auto text-left">
+  <%= form_with(model: @user, class: "space-y-6") do |form| %>
+    <% if @user.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<br>
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<div>
-  <%= link_to "Back to users", users_path %>
+    <div>
+      <%= form.label :email, class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <%= form.text_field :email, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div>
+      <%= form.label :password, class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <%= form.password_field :password, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div>
+      <%= form.label :password_confirmation, class: "block text-sm font-medium leading-6 text-gray-900" %>
+      <%= form.password_field :password_confirmation, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6" %>
+    </div>
+
+    <div>
+      <%= form.submit class: "flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600" %>
+    </div>
+  <% end %>
 </div>
