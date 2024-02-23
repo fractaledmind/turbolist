@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # --- public routes ---
   resources :users, only: %i[ new create ]
   resources :sessions, only: %i[ new create ]
+  get "sign_in", controller: "sessions", action: :new, as: :sign_in
+  get "sign_up", controller: "users", action: :new, as: :sign_up
 
   # --- authenticated routes ---
   constraints(AuthenticatedConstraint.new) do
