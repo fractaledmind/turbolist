@@ -8,13 +8,13 @@
 </h1>
 
 <div class="max-w-sm mx-auto text-left">
-  <%= form_with(model: @session, class: "space-y-6") do |form| %>
-    <% if @session.errors.any? %>
+  <%= form_with(url: sessions_path, class: "space-y-6") do |form| %>
+    <% if @user.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
         <ul>
-          <% @session.errors.each do |error| %>
+          <% @user.errors.each do |error| %>
             <li><%= error.full_message %></li>
           <% end %>
         </ul>

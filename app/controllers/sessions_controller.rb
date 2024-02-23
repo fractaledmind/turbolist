@@ -6,25 +6,18 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
-    @session = Session.new
+    @user = User.new
     render layout: "authentication"
   end
 
   # POST /sessions
   def create
-    @session = Session.new(session_params)
+    if user = User.authenticate_by(email: params[:email], password: params[:password])
+      sign_in(user:)
 
-    if @session.save
-      redirect_to @session, notice: "Session was successfully created."
+      redirect_to user_root_path, notice: "Signed in successfully"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to sign_in_path(email_hint: params[:email]), alert: "That email or password is incorrect"
     end
   end
-
-  private
-
-    # Only allow a list of trusted parameters through.
-    def session_params
-      params.require(:session).permit(:user_id, :user_agent, :ip_address)
-    end
 end
