@@ -24,27 +24,17 @@
         <ul class="absolute right-0 z-50 w-48 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:bg-slate-950">
           <li>
             <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-              <%= icon "arrow-bar-right", classes: "size-3" %>
-              Unsubscribe
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
               <%= icon "copy", classes: "size-3" %>
               Copy link
             </a>
           </li>
           <li>
-            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-              <%= icon "arrow-counterclockwise", classes: "size-3" %>
-              Mark all incomplete
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center gap-2 whitespace-nowrap px-2 py-1 text-red-500 hover:bg-slate-300 dark:hover:bg-slate-900">
-              <%= icon "trash3", classes: "size-3 text-red-500" %>
-              Delete task
-            </a>
+            <%= button_to task, method: :delete,
+                  class: "flex items-center gap-2 w-full whitespace-nowrap px-2 py-1 text-red-500 hover:bg-slate-300 dark:hover:bg-slate-900",
+                  form: { data: { turbo_confirm: "Are you sure you want delete?" } } do %>
+                    <%= icon "trash3", classes: "size-3 text-red-500" %>
+                    Delete task
+            <% end %>
           </li>
         </ul>
       </details>
