@@ -12,24 +12,22 @@
   anchor-name: var(--anchor-name);
 }
 [popover] {
-  anchor-default: var(--anchor);
-  position-fallback: --fallback;
-}
-@position-fallback --fallback {
-  @try {
-    bottom: anchor(top);
-    left: anchor(left)
-  }
-  @try {
-    top: anchor(bottom);
-    left: anchor(left)
-  }
-}
-[popover] {
   position: absolute;
   inset: auto;
   margin: 0;
   padding: 0;
+}
+[popover],
+[popover][data-position="bottom"] {
+  anchor-default: var(--anchor);
+  top: anchor(bottom);
+  left: anchor(left);
+}
+[popover][data-position="top"] {
+  anchor-default: var(--anchor);
+  top: unset;
+  bottom: anchor(top);
+  left: anchor(left);
 }
 
 ::view-transition-group(*),
