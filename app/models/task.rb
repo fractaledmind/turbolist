@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   belongs_to :user
   belongs_to :list, optional: true
   accepts_nested_attributes_for :list
+  belongs_to :assignee, optional: true, class_name: "User"
 
   has_rich_text :description
 
