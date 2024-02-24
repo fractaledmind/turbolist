@@ -10,8 +10,8 @@ export default class extends Controller {
   execute(event) {
     const value = event.target.value.toLowerCase()
     this.inputTargets.forEach((input) => {
-      const inputValue = input.value.toLowerCase()
-      if (inputValue.includes(value)) {
+      const searchValue = input.dataset.searchTextValue.toLowerCase()
+      if (searchValue.includes(value)) {
         input.parentElement.style.display = null
       } else if (input.checked) {
         input.parentElement.style.display = null
