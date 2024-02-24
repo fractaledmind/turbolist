@@ -7,6 +7,8 @@ module.exports = {
   ],
   plugins: [
     require('@tailwindcss/container-queries'),
-    require('@tailwindcss/forms'),
+    require("@tailwindcss/forms")({
+      strategy: 'class', // only generate classes
+    }),
   ],
 }
