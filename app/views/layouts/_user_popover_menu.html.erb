@@ -1,0 +1,62 @@
+<%# locals: (user:) -%>
+
+<div class="">
+  <% user_popover_menu_dom_id = "user_popover_menu" %>
+  <button type="button"
+          class="inline-flex size-8 items-center justify-center rounded-full bg-blue-500 hover:ring-4 hover:ring-slate-300 dark:hover:ring-slate-600"
+          style="--anchor-name: --<%= user_popover_menu_dom_id %>"
+          popovertarget="<%= user_popover_menu_dom_id %>">
+    <%= avatar_for(user.email, size_class: "size-8") %>
+  </button>
+
+  <div id="<%= user_popover_menu_dom_id %>"
+       popover="auto"
+       style="--anchor: --<%= user_popover_menu_dom_id %>"
+       class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
+       data-position="top">
+      <div class="w-48 py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden">
+        <div class="py-1" role="none">
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("plus-lg", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            New Team
+          </a>
+        </div>
+        <div class="py-1" role="none">
+          <a href="#" class="flex items-center gap-2 px-2 py-1 text-indigo-500 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("lightning-charge", classes: "size-3 text-indigo-500") %>
+            Upgrade to Pro
+          </a>
+        </div>
+        <div class="py-1" role="none">
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("gift", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            Invite friends
+          </a>
+        </div>
+        <div class="py-1" role="none">
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("gear-fill", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            Settings
+          </a>
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("layers", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            Integrations
+          </a>
+        </div>
+        <div class="py-1" role="none">
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("megaphone", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            Get support
+          </a>
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("phone", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            Get mobile app
+          </a>
+          <a href="#" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap">
+            <%= icon("lightning-charge", classes: "size-3 text-slate-500 dark:text-slate-400") %>
+            See what's new
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
