@@ -21,7 +21,7 @@
 [popover][data-position="bottom"] {
   anchor-default: var(--anchor);
   top: anchor(bottom);
-  left: anchor(left);
+  right: anchor(right);
 }
 [popover][data-position="top"] {
   anchor-default: var(--anchor);
