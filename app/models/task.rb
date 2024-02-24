@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   include ArrayColumns
 
+  belongs_to :user
   belongs_to :list, optional: true
   accepts_nested_attributes_for :list
 

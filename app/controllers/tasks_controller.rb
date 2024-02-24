@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = Current.user.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -21,7 +21,7 @@ class TasksController < ApplicationController
 
   # POST /tasks
   def create
-    @task = Task.new(task_params)
+    @task = Current.user.tasks.build(task_params)
 
     if @task.save
       redirect_to tasks_path, notice: "Task was successfully created."
@@ -50,11 +50,11 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = Current.user.tasks.find(params[:id])
     end
 
     def set_tasks
-      @tasks = Task.all.order(created_at: :desc)
+      @tasks = Current.user.tasks.order(created_at: :desc)
       case params[:grouping]
       when "none" || "created_at"
         @tasks = @tasks.group_by { :IGNORE_ME }
