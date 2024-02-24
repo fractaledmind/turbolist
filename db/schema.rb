@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_24_122408) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_24_125341) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -75,6 +75,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_24_122408) do
     t.json "labels", default: []
     t.integer "list_id"
     t.integer "user_id", null: false
+    t.integer "assignee_id"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["list_id"], name: "index_tasks_on_list_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
     t.check_constraint "JSON_TYPE(labels) = 'array'", name: "task_labels_is_array"
@@ -94,4 +96,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_24_122408) do
   add_foreign_key "sessions", "users"
   add_foreign_key "tasks", "lists"
   add_foreign_key "tasks", "users"
+  add_foreign_key "tasks", "users", column: "assignee_id"
 end
