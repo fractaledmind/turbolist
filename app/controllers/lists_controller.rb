@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = Current.user.lists
   end
 
   # GET /lists/1
@@ -12,7 +12,7 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    @list = List.new
+    @list = Current.user.lists.build
   end
 
   # GET /lists/1/edit
@@ -21,7 +21,7 @@ class ListsController < ApplicationController
 
   # POST /lists
   def create
-    @list = List.new(list_params)
+    @list = Current.user.lists.build(list_params)
 
     if @list.save
       redirect_to @list, notice: "List was successfully created."
@@ -48,7 +48,7 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = Current.user.lists.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
