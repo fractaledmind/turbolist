@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   private
 
     def set_application_lists
-      @application_lists = Current.user.lists
+      @application_lists = Current.user.lists.where.not(id: nil).order(:title)
     end
 end
