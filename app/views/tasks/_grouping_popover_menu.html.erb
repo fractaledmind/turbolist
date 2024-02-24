@@ -1,20 +1,20 @@
 <%# locals: () -%>
 
 <div class="[view-transition-name:action]">
-  <% grouping_form_dom_id = "tasks_grouping_form" %>
+  <% grouping_menu_dom_id = "tasks_grouping_menu" %>
   <button type="button"
           class="h-8 px-3 py-1 bg-slate-200 text-slate-500 hover:bg-slate-300 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white inline-flex gap-1 items-center justify-center rounded-full"
-          style="--anchor-name: --<%= grouping_form_dom_id %>"
-          popovertarget="<%= grouping_form_dom_id %>">
+          style="--anchor-name: --<%= grouping_menu_dom_id %>"
+          popovertarget="<%= grouping_menu_dom_id %>">
     <%= icon "sort-down", classes: ["size-4", ("text-blue-500" if params.key?(:grouping))] %>
     <%= params[:grouping].humanize if params.key?(:grouping) %>
   </button>
 
-  <div id="<%= grouping_form_dom_id %>"
+  <div id="<%= grouping_menu_dom_id %>"
        popover="auto"
-       style="--anchor: --<%= grouping_form_dom_id %>"
+       style="--anchor: --<%= grouping_menu_dom_id %>"
        class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
-       data-controller="checkboxes clone search">
+       data-controller="">
       <ul class="w-48 py-1 bg-slate-200 dark:bg-slate-950 shadow rounded-xl overflow-hidden">
         <li>
           <%= link_to url_for(grouping: :none), class: "flex items-center gap-2 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900 whitespace-nowrap" do %>
