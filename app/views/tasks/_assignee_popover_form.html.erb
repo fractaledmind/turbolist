@@ -1,0 +1,42 @@
+<%# locals: (task:) -%>
+
+<div>
+  <% assignee_form_dom_id = dom_id(task, :assignee_form) %>
+  <button type="button"
+          class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
+          style="--anchor-name: --<%= assignee_form_dom_id %>"
+          popovertarget="<%= assignee_form_dom_id %>">
+    <%= icon "person", classes: "size-2.5 text-slate-400" %>
+  </button>
+
+  <div id="<%= assignee_form_dom_id %>"
+       popover="auto"
+       style="--anchor: --<%= assignee_form_dom_id %>"
+       class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
+       data-controller="checkboxes search">
+    <%= form_with(model: task, class: "", data: { controller: 'autosave' }) do |form| %>
+      <div class="py-1" role="none">
+        <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
+          <%= icon "search", classes: "size-3 text-inherit" %>
+          <input autofocus class="bg-transparent focus:outline-none" placeholder="Search for email" data-action="search#execute" />
+        </div>
+      </div>
+      <div class="py-1" role="none">
+        <%= form.collection_radio_buttons :assignee_id, User.all, :id, :email, {} do |builder| %>
+          <% field_id = form.field_id(task.id, :assignee_id, builder.text) %>
+          <%= builder.label for: field_id, class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
+            <%= builder.radio_button id: field_id, class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child", search_target: "input", search_text_value: builder.text } %>
+            <%= icon "person", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+            <%= builder.text %>
+            <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="p-2" role="none">
+        <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800" data-action="checkboxes#deselectAllAndSubmit">Clear</button>
+      </div>
+
+      <%= form.submit class: "sr-only" %>
+    <% end %>
+  </div>
+</div>
