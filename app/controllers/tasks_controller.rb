@@ -63,7 +63,7 @@ class TasksController < ApplicationController
       when "list"
         @tasks = @tasks.group_by { |task| task.list&.title }
       when "label"
-        @tasks = @tasks.unique_labels.map { |label| [label, Task.with_any_labels(label)] }.to_h
+        @tasks = @tasks.unique_labels.map { |label| [label, @tasks.with_any_labels(label)] }.to_h
       else
         @tasks = @tasks.group_by { :IGNORE_ME }
       end
