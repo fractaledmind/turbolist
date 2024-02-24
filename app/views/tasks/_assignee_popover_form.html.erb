@@ -6,7 +6,11 @@
           class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
           style="--anchor-name: --<%= assignee_form_dom_id %>"
           popovertarget="<%= assignee_form_dom_id %>">
-    <%= icon "person", classes: "size-2.5 text-slate-400" %>
+    <% if task.assignee_id.present? %>
+      <%= avatar_for(task.assignee.email) %>
+    <% else %>
+      <%= icon "person", classes: "size-2.5 text-slate-400" %>
+    <% end %>
   </button>
 
   <div id="<%= assignee_form_dom_id %>"
@@ -27,7 +31,7 @@
           <% field_id = form.field_id(task.id, :assignee_id, builder.text) %>
           <%= builder.label for: field_id, class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
             <%= builder.radio_button id: field_id, class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child", search_target: "input", search_text_value: builder.text } %>
-            <%= icon "person", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+            <%= avatar_for(builder.text) %>
             <%= builder.text %>
             <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
           <% end %>
