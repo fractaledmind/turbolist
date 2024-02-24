@@ -3,6 +3,7 @@ module Authenticatable
 
   included do
     before_action :authenticate!
+    helper_method :user_signed_in?
   end
 
 	def sign_in(user:)
@@ -34,5 +35,9 @@ module Authenticatable
     return true if authenticate
 
     redirect_to new_session_path
+  end
+
+  def user_signed_in?
+    Current.user.present?
   end
 end

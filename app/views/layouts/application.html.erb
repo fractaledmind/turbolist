@@ -110,7 +110,7 @@
                   </span>
                 </div>
                 <ul role="list" class="">
-                  <% List.all.each do |list| %>
+                  <% @application_lists.each do |list| %>
                     <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-2 px-2 py-1 text-sm leading-6 pl-6" data-controller="emoji-picker">
                       <% emoji_popover_dom_id = dom_id(list, :emoji_popover) %>
                       <%= form_with(model: list, data: { controller: :autosave }) do |form| %>

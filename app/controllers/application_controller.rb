@@ -3,4 +3,12 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   include Authenticatable
+
+  before_action :set_application_lists, if: :user_signed_in?
+
+  private
+
+    def set_application_lists
+      @application_lists = Current.user.lists
+    end
 end
