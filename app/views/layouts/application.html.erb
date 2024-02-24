@@ -30,9 +30,6 @@
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="group/sidebar h-full flex grow flex-col border-r border-gray-200 bg-white dark:bg-slate-900 dark:border-slate-800">
           <div class="flex shrink-0 py-3 items-center justify-end px-3">
-            <button type="button" class="invisible group-hover/sidebar:visible size-8 hover:bg-slate-100 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full">
-              <%= icon("layout-sidebar", classes: "size-4 text-slate-500 dark:text-slate-400") %>
-            </button>
           </div>
           <nav class="flex flex-1 flex-col overflow-y-auto border-y border-slate-100 dark:border-slate-800">
             <ul role="list" class="flex flex-1 flex-col gap-y-4">
@@ -67,9 +64,6 @@
                   </span>
 
                   <span class="invisible group-hover/sidebar:visible z-10 flex items-center gap-px">
-                    <button type="button" class="size-7 hover:bg-slate-200 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full">
-                      <%= icon("folder-plus", classes: "size-4 text-slate-500 dark:text-slate-400") %>
-                    </button>
                     <%= link_to new_list_path, title: "New list", class: "size-7 hover:bg-slate-200 dark:hover:bg-slate-700 inline-flex items-center justify-center rounded-full" do %>
                       <%= icon("journal-plus", classes: "size-4 text-slate-500 dark:text-slate-400") %>
                     <% end %>
