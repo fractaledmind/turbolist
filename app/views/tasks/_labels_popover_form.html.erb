@@ -1,7 +1,7 @@
-<%# locals: (task:) -%>
+<%# locals: (task:, context:) -%>
 
 <div>
-  <% labels_form_dom_id = dom_id(task, :labels_form) %>
+  <% labels_form_dom_id = dom_id(task, "#{context}_labels_form") %>
   <button type="button"
           class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
           style="--anchor-name: --<%= labels_form_dom_id %>"

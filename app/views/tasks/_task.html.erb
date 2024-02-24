@@ -60,42 +60,9 @@
         <% end %>
       <% end %>
 
-      <details class="relative ml-auto">
-        <summary class="marker-none cursor-pointer">
-          <div class="inline-flex size-5 items-center justify-center rounded-full text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:bg-slate-700 dark:hover:bg-slate-700 dark:hover:text-white">
-            <%= icon "person", classes: "size-3 text-slate-400" %>
-          </div>
-        </summary>
-        <div class="absolute right-0 z-50 w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950">
-          <div class="py-1" role="none">
-            <div class="group flex items-center gap-2 whitespace-nowrap px-4 py-1 text-slate-800 dark:text-white">
-              <%= icon "search", classes: "size-3 text-inherit" %>
-              <input class="bg-transparent focus:outline-none" placeholder="Search for name" />
-            </div>
-          </div>
-          <div class="py-1" role="none">
-            <label class="group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-              <input type="radio" name="assignee" class="peer hidden w-0 appearance-none" />
-              <span class="inline-flex size-4 items-center justify-center rounded-full bg-blue-500">
-                <span class="text-xs leading-none text-white">J</span>
-              </span>
-              John Doe
-              <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-500 peer-checked:visible" %>
-            </label>
-            <label class="group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-900">
-              <input type="radio" name="assignee" class="peer hidden w-0 appearance-none" />
-              <span class="inline-flex size-4 items-center justify-center rounded-full bg-green-500">
-                <span class="text-xs leading-none text-white">S</span>
-              </span>
-              Sally Doe
-              <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-500 peer-checked:visible" %>
-            </label>
-          </div>
-          <div class="p-2" role="none">
-            <button type="button" class="h-8 w-full rounded-full bg-slate-300 hover:bg-slate-400 dark:bg-slate-900 dark:hover:bg-slate-800">Clear</button>
-          </div>
-        </div>
-      </details>
+      <div class="ml-auto">
+        <%= render "assignee_popover_form", task: task, context: "details" %>
+      </div>
 
       <div class="flex w-full items-center gap-1">
         <details class="relative z-0">
@@ -301,9 +268,9 @@
           </div>
         </details>
 
-        <%= render "labels_popover_form", task: task %>
+        <%= render "labels_popover_form", task: task, context: "details" %>
 
-        <%= render "list_popover_form", task: task %>
+        <%= render "list_popover_form", task: task, context: "details" %>
       </div>
     </div>
   </header>

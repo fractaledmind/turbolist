@@ -1,7 +1,7 @@
-<%# locals: (task:) -%>
+<%# locals: (task:, context:) -%>
 
 <div>
-  <% assignee_form_dom_id = dom_id(task, :assignee_form) %>
+  <% assignee_form_dom_id = dom_id(task, "#{context}_assignee_form") %>
   <button type="button"
           class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
           style="--anchor-name: --<%= assignee_form_dom_id %>"
