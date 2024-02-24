@@ -22,6 +22,7 @@
         </div>
       </div>
       <div class="py-1" role="none">
+        <%# TODO: We need a Team model to scope the sub-set of Users that the Current.user can possible assign a task to %>
         <%= form.collection_radio_buttons :assignee_id, User.all, :id, :email, {} do |builder| %>
           <% field_id = form.field_id(task.id, :assignee_id, builder.text) %>
           <%= builder.label for: field_id, class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
