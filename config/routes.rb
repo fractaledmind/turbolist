@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   # --- authenticated routes ---
   constraints(AuthenticatedConstraint.new) do
     resources :lists
-    resources :tasks
+    resources :tasks do
+      collection do
+        get "inbox", controller: "tasks", action: :index, as: :inbox, defaults: { filter: "inbox" }
+        get "today", controller: "tasks", action: :index, as: :today, defaults: { filter: "today" }
+      end
+    end
 
     root "tasks#index", as: :user_root
   end

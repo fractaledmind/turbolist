@@ -37,19 +37,28 @@
                 <ul role="list" class="">
                   <li>
                     <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
-                    <a href="#" class="border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700 group flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
+                    <%= link_to inbox_tasks_path, class: class_names(
+                      "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6",
+                      "border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700" => current_page?(inbox_tasks_path)
+                    ) do %>
                       <%= icon("inbox-fill", classes: "text-orange-500") %>
                       Inbox
-                    </a>
+                    <% end %>
                   </li>
                   <li>
-                    <a href="#" class="hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6">
+                    <%= link_to today_tasks_path, class: class_names(
+                      "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6",
+                      "border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700" => current_page?(today_tasks_path)
+                    ) do %>
                       <%= icon("calendar3", classes: "text-orange-500") %>
                       Today
-                    </a>
+                    <% end %>
                   </li>
                   <li>
-                    <%= link_to tasks_path, class: "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6" do %>
+                    <%= link_to tasks_path, class: class_names(
+                      "hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-3 px-2 py-1 text-sm leading-6 pl-6",
+                      "border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700" => current_page?(tasks_path)
+                    ) do %>
                       <%= icon("ui-checks", classes: "text-orange-500") %>
                       Tasks
                     <% end %>
@@ -57,7 +66,7 @@
                 </ul>
               </li>
               <li>
-                <div class="relative pl-6 text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 px-2 flex items-center justify-between">
+                <div class="relative pl-6 text-xs font-semibold leading-6 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 px-2 flex items-center justify-between <%= "border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700" if current_page?(lists_path) %>">
                   <span class="py-1">
                     <span class="group-hover/sidebar:text-slate-500 dark:group-hover/sidebar:text-white">Lists</span>
                     <%= link_to "Browse all", lists_path, class: "invisible group-hover/sidebar:visible ml-1 text-slate-400 after:absolute after:inset-0 after:block" %>
@@ -71,7 +80,7 @@
                 </div>
                 <ul role="list" class="">
                   <% @application_lists.each do |list| %>
-                    <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-2 px-2 py-1 text-sm leading-6 pl-6" data-controller="emoji-picker">
+                    <li class="relative hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-x-2 px-2 py-1 text-sm leading-6 pl-6 <%= "border-r-2 border-orange-500 bg-slate-200 dark:bg-slate-700" if current_page?(list_path(list)) %>" data-controller="emoji-picker">
                       <% emoji_popover_dom_id = dom_id(list, :emoji_popover) %>
                       <%= form_with(model: list, data: { controller: :autosave }) do |form| %>
                         <button type="button"
