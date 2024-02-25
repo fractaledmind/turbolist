@@ -1,0 +1,100 @@
+<%# locals: (task:, context:) -%>
+
+<% today = Date.today %>
+<% date_range = (today.beginning_of_month.beginning_of_week..today.end_of_month.end_of_week).to_a %>
+
+<div>
+  <% due_on_form_dom_id = dom_id(task, "#{context}_due_on_form") %>
+  <button type="button"
+          class="-ml-1 inline-flex items-center justify-center gap-1 rounded-full px-2 py-1 text-xs text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
+          style="--anchor-name: --<%= due_on_form_dom_id %>"
+          popovertarget="<%= due_on_form_dom_id %>">
+    <%= icon "calendar3", classes: "size-2.5 text-slate-400" %>
+    <% if task.due_on&.today? %>
+      <%= time_tag task.due_on, "Today" %>
+    <% elsif task.due_on&.tomorrow? %>
+      <%= time_tag task.due_on, "Tomorrow" %>
+    <% elsif task.due_on&.past? %>
+      <%= time_tag task.due_on, "#{distance_of_time_in_words(Date.today, task.due_on)} ago" %>
+    <% elsif task.due_on&.future? %>
+      <%= time_tag task.due_on, "in #{distance_of_time_in_words(Date.today, task.due_on)}" %>
+    <% else %>
+    <% end %>
+  </button>
+
+  <div id="<%= due_on_form_dom_id %>"
+       popover="auto"
+       style="--anchor: --<%= due_on_form_dom_id %>"
+       class="w-max max-w-md divide-y divide-slate-300 overflow-hidden rounded-xl bg-slate-200 py-1 shadow dark:divide-slate-800 dark:bg-slate-950 dark:text-white"
+       data-controller="checkboxes clone search">
+    <%= form_with(model: task, class: "", data: { controller: 'autosave' }) do |form| %>
+      <div class="py-1" role="none">
+        <%= form.collection_radio_buttons :due_on, [[Date.today.to_date, "Today"], [1.day.from_now.to_date, "Tomorrow"], [1.week.from_now.beginning_of_week.to_date, "Start of next week"]], :first, :last, { include_blank: false } do |builder| %>
+          <% field_id = form.field_id(task.id, :due_on, builder.text) %>
+          <%= builder.label for: field_id, class: "group/label flex items-center gap-2 whitespace-nowrap px-4 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 has-[:checked]:bg-slate-300 dark:has-[:checked]:bg-slate-800" do %>
+            <%= builder.radio_button id: field_id, class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child" } %>
+            <%= icon "calendar3", classes: "size-3 text-slate-500 group-hover/label:text-slate-600 peer-checked:text-orange-700 dark:text-slate-400 dark:group-hover/label:text-white dark:peer-checked:text-orange-500" %>
+            <%= builder.text %>
+            <%= icon "check2", classes: "invisible ml-auto size-4 text-orange-700 dark:text-orange-500 peer-checked:visible" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="py-1" role="none">
+        <div class="flex items-center px-4 py-1">
+          <h2 class="flex-auto text-sm font-semibold text-gray-900 dark:text-white">
+            <time datetime="<%= today.strftime('%Y-%m') %>">
+              <%= t('date.month_names')[today.month] %> <%= today.year %>
+            </time>
+          </h2>
+          <button type="button" class="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
+            <span class="sr-only">Previous month</span>
+            <%= icon "chevron-left", classes: "size-5" %>
+          </button>
+          <button type="button" class="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500">
+            <span class="sr-only">Next month</span>
+            <%= icon "chevron-right", classes: "size-5" %>
+          </button>
+        </div>
+        <div class="grid grid-cols-7 px-1 py-2 text-center text-sm leading-6 text-gray-500 dark:text-white">
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+          <div>S</div>
+        </div>
+        <div class="mt-2 grid grid-cols-7 gap-1 px-2 text-sm">
+          <!--
+            Always include: "mx-auto flex size-8 items-center justify-center rounded-full"
+            Is selected, include: "text-white"
+            Is not selected and is today, include: "text-indigo-600"
+            Is not selected and is not today and is current month, include: "text-gray-900"
+            Is not selected and is not today and is not current month, include: "text-gray-400"
+            Is selected and is today, include: "bg-indigo-600"
+            Is selected and is not today, include: "bg-gray-900"
+            Is not selected, include: "hover:bg-gray-200"
+            Is selected or is today, include: "font-semibold"
+          -->
+          <%# Ensure that we don't nullify any options selected from the first `collection_radio_buttons` called by re-rendering a *second* hidden input with a null value %>
+          <%= form.collection_radio_buttons :due_on, date_range, :itself, :day, { include_hidden: false } do |builder| %>
+            <% field_id = form.field_id(task.id, :due_on, builder.text) %>
+            <%= builder.label for: field_id,
+                  class: class_names(
+                    "group/label mx-auto flex size-8 items-center justify-center rounded-full",
+                    "text-gray-900 hover:bg-orange-600/50 dark:text-white" => builder.value.between?(today.beginning_of_month, today.end_of_month),
+                    "border border-slate-700" => builder.value == today,
+                    "bg-orange-600" => builder.value == task.due_on,
+                    "text-gray-400 hover:bg-orange-600/50 dark:text-slate-400" => (builder.value <= today.last_month.end_of_month) || (builder.value >= today.next_month.beginning_of_month),
+                  ) do %>
+              <%= builder.radio_button id: field_id, class: "peer hidden w-0 appearance-none", data: { action: 'autosave#save', checkboxes_target: "child" } %>
+              <%= time_tag builder.value, builder.text %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form.submit class: "sr-only" %>
+    <% end %>
+  </div>
+</div>
