@@ -47,7 +47,7 @@
     <% end %>
 
     <section class="flex flex-grow flex-col justify-end">
-      <%= form_with(model: list, class: "flex-grow flex flex-col") do |form| %>
+      <%= form_with(model: list, class: "flex-grow flex flex-col", data: { turbo_permanent: true }) do |form| %>
         <%= form.rich_text_area :description, rows: 10, class: "h-full", placeholder: "Start typing..." %>
         <%= form.submit class: "sr-only" %>
       <% end %>
