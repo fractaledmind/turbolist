@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     @task = Current.user.tasks.build(task_params)
 
     if @task.save
-      redirect_to tasks_path, notice: "Task was successfully created."
+      redirect_back fallback_location: tasks_path, notice: "Task was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
