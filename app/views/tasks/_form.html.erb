@@ -1,4 +1,5 @@
 <%= form_with(model: task, class: "", data: { controller: :form, action: "turbo:submit-end->form#clear" }) do |form| %>
+  <%= form.hidden_field :list_id, value: task.list_id %>
   <%= form.label :title, class: "peer block hover:bg-slate-200 dark:hover:bg-slate-800 py-1 group/input " do %>
     <div class="max-w-3xl px-12 mx-auto w-full flex gap-x-2 items-center [view-transition-name:taskform]">
       <%= icon "app-indicator", classes: "size-6 text-slate-400 dark:text-slate-600" %>

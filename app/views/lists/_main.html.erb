@@ -40,17 +40,25 @@
     </div>
   </div>
 
-  <div class="max-w-3xl px-12 mx-auto mt-6 mb-6 space-y-6 flex flex-col flex-grow">
-    <%= form_with(model: list, class: "", data: { controller: 'autosave' }) do |form| %>
-      <%= form.text_field :title, class: "peer w-11/12 bg-transparent text-5xl placeholder:text-slate-600 focus:outline-none", placeholder: "Untitled", autofocus: true, autocomplete: false, value: form.object.title %>
+  <div class="mt-6 mb-6 space-y-6 flex flex-col flex-grow">
+    <%= form_with(model: list, class: "max-w-3xl px-12 mx-auto w-full", data: { controller: 'autosave' }) do |form| %>
+      <%= form.text_field :title, class: "peer w-full bg-transparent text-5xl placeholder:text-slate-600 focus:outline-none", placeholder: "Untitled", autofocus: true, autocomplete: false, value: form.object.title %>
       <%= form.submit class: "sr-only" %>
     <% end %>
 
-    <section class="flex flex-grow flex-col justify-end">
+    <section class="min-h-[50%] max-w-3xl px-12 mx-auto w-full flex flex-grow flex-col justify-end">
       <%= form_with(model: list, class: "flex-grow flex flex-col", data: { turbo_permanent: true }) do |form| %>
-        <%= form.rich_text_area :description, rows: 10, class: "h-full", placeholder: "Start typing..." %>
+        <%= form.rich_text_area :description, rows: 5, class: "h-full", placeholder: "Start typing..." %>
         <%= form.submit class: "sr-only" %>
       <% end %>
+    </section>
+
+    <section class="min-h-[50%] flex flex-grow flex-col justify-start">
+      <%= render "tasks/form", task: list.tasks.new %>
+
+      <div class="max-w-3xl px-12 mx-auto w-full">
+        <%= render "tasks/collection", tasks: list.tasks.where.not(id: nil) %>
+      </div>
     </section>
   </div>
 </div>

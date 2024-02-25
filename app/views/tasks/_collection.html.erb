@@ -19,7 +19,7 @@
         <%= text_field_tag "foo", task.title, class: "peer bg-transparent w-10/12 placeholder:text-slate-600 focus:outline-none", placeholder: "New task" %>
       <% end %>
 
-      <%= render "assignee_popover_form", task: task, context: "collection" %>
+      <%= render "tasks/assignee_popover_form", task: task, context: "collection" %>
 
       <%= link_to task, class: "size-5 text-slate-400 hover:bg-slate-200 hover:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center justify-center rounded-full" do %>
         <%= icon "arrow-right", classes: "size-2.5 text-slate-400" %>
@@ -27,11 +27,11 @@
 
       <div class="flex-grow w-full flex items-center gap-1">
         <span class="w-6">&nbsp;</span>
-        <%= render "due_on_popover_form", task: task, context: "collection" %>
+        <%= render "tasks/due_on_popover_form", task: task, context: "collection" %>
 
-        <%= render "labels_popover_form", task: task, context: "collection" %>
+        <%= render "tasks/labels_popover_form", task: task, context: "collection" %>
 
-        <%= render "list_popover_form", task: task, context: "collection" %>
+        <%= render "tasks/list_popover_form", task: task, context: "collection" %>
       </div>
     </li>
   <% end %>
