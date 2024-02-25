@@ -1,9 +1,17 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  before_action :set_tasks, only: %i[ index show ]
+  before_action :set_tasks, only: %i[ index inbox today show ]
 
   # GET /tasks
   def index
+  end
+
+  # GET /tasks/inbox
+  def inbox
+  end
+
+  # GET /tasks/today
+  def today
   end
 
   # GET /tasks/1
@@ -55,6 +63,16 @@ class TasksController < ApplicationController
 
     def set_tasks
       @tasks = Current.user.tasks.order(created_at: :desc)
+
+      case params[:filter]
+      when "inbox"
+        @tasks = @tasks.where(list_id: nil)
+      when "today"
+        @tasks = @tasks.where(due_on: ..Date.today)
+      else
+        @tasks = @tasks
+      end
+
       case params[:grouping]
       when "none" || "created_at"
         @tasks = @tasks.group_by { :IGNORE_ME }

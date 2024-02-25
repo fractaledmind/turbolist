@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :lists
     resources :tasks do
       collection do
-        get "inbox", controller: "tasks", action: :index, as: :inbox, defaults: { filter: "inbox" }
-        get "today", controller: "tasks", action: :index, as: :today, defaults: { filter: "today" }
+        get "inbox", defaults: { filter: "inbox" }
+        get "today", defaults: { filter: "today" }
       end
     end
 

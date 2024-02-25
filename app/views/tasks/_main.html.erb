@@ -6,14 +6,16 @@
   </div>
 
   <div class="max-w-3xl w-full px-12 mx-auto mt-6 mb-6">
-    <h1 class="text-5xl font-semibold w-fit [view-transition-name:header]">Inbox</h1>
+    <h1 class="text-5xl font-semibold w-fit [view-transition-name:header]">
+      <%= yield :main_title %>
+    </h1>
     <div class="@container mt-6">
       <p class="rounded-2xl p-2 @[668px]:rounded-full @[668px]:p-0 border-4 border-slate-100 bg-slate-100 dark:border-slate-800 dark:bg-slate-800 inline-flex items-center gap-2 [view-transition-name:notice]">
         <span class="size-8 min-w-8 bg-indigo-100 dark:bg-indigo-700/50 inline-flex items-center justify-center rounded-full [view-transition-name:notice-icon]">
           <%= icon("book", classes: "size-4 text-indigo-500") %>
         </span>
         <span class="text-base text-indigo-500 [view-transition-name:notice-text]">
-          Manage all new and incoming tasks —&nbsp;create, move, schedule, and more
+          <%= yield :main_description %>
         </span>
         <button type="button" class="size-8 min-w-8 bg-slate-200 text-slate-700 hover:bg-slate-300 hover:text-slate-900 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white inline-flex items-center justify-center rounded-full [view-transition-name:notice-link]">
           <%= icon "arrow-up-right", classes: "size-4" %>
